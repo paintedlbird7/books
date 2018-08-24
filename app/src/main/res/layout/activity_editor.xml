@@ -37,8 +37,14 @@
 
             <!-- Breed field -->
             <EditText
-                android:id="@+id/edit_pet_price"
+                android:id="@+id/edit_book_price"
                 android:hint="@string/hint_book_price"
+                android:inputType="textCapWords"
+                style="@style/EditorFieldStyle" />
+
+            <EditText
+                android:id="@+id/edit_book_quantity"
+                android:hint="@string/hint_book_quantity"
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
         </LinearLayout>

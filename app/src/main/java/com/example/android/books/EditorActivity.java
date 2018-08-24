@@ -55,8 +55,8 @@ public class EditorActivity extends AppCompatActivity {
         mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
         mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
         //mSupplierNameSpinner = (Spinner) findViewById(R.id.spinner_gender);
-        mSupplierNameEditText = (EditText) findViewById(R.id.edit_text_supplier_name);
-        mSupplierPhoneNumberEditText = (EditText) findViewById(R.id.edit_text_supplier_phone_number);
+        mSupplierNameEditText = (EditText) findViewById(R.id.edit_supplier_name);
+        mSupplierPhoneNumberEditText = (EditText) findViewById(R.id.edit_supplier_phone_number);
 
 
 

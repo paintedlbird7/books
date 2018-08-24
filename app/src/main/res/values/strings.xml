@@ -53,4 +53,5 @@
     <string name="hint_supplier_name">Supplier Name</string>
     <string name="category_supplier_phone">Supplier Phone Number</string>
     <string name="hint_supplier_phone_number">Supplier_Phone Number</string>
+    <string name="hint_book_quantity">Quantity</string>
 </resources>

@@ -15,8 +15,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.android.pets.data.PetContract.PetEntry;
-import com.example.android.pets.data.PetDbHelper;
+import com.example.android.books.data.PetContract.PetEntry;
+import com.example.android.books.data.PetDbHelper;
 
 /**
  * Allows user to create a new pet or edit an existing one.
@@ -27,20 +27,23 @@ public class EditorActivity extends AppCompatActivity {
     private EditText mNameEditText;
 
     /** EditText field to enter the pet's breed */
-    private EditText mBreedEditText;
+    private EditText mPriceEditText;
 
     /** EditText field to enter the pet's weight */
-    private EditText mWeightEditText;
+    private EditText mQuantityEditText;
 
     /** EditText field to enter the pet's gender */
-    private Spinner mGenderSpinner;
+    private EditText mSupplierNameEditText;
 
-    /**
-     * Gender of the pet. The possible valid values are in the PetContract.java file:
-     * {@link PetEntry#GENDER_UNKNOWN}, {@link PetEntry#GENDER_MALE}, or
-     * {@link PetEntry#GENDER_FEMALE}.
-     */
-    private int mGender = PetEntry.GENDER_UNKNOWN;
+    /** EditText field to enter the pet's gender */
+    private EditText mSupplierPhoneNumberEditText;
+
+//    /**
+//     * Gender of the pet. The possible valid values are in the PetContract.java file:
+//     * {@link BookEntry#GENDER_UNKNOWN}, {@link BookEntry#GENDER_MALE}, or
+//     * {@link BookEntry#GENDER_FEMALE}.
+//     */
+    private int mGender = BookEntry.GENDER_UNKNOWN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +51,14 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         // Find all relevant views that we will need to read user input from
-        mNameEditText = (EditText) findViewById(R.id.edit_pet_name);
-        mBreedEditText = (EditText) findViewById(R.id.edit_pet_breed);
-        mWeightEditText = (EditText) findViewById(R.id.edit_pet_weight);
-        mGenderSpinner = (Spinner) findViewById(R.id.spinner_gender);
+        mNameEditText = (EditText) findViewById(R.id.edit_book_name);
+        mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
+        mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
+        //mSupplierNameSpinner = (Spinner) findViewById(R.id.spinner_gender);
+        mSupplierNameEditText = (EditText) findViewById(R.id.edit_text_supplier_name);
+        mSupplierPhoneNumberEditText = (EditText) findViewById(R.id.edit_text_supplier_phone_number);
+
+
 
         setupSpinner();
     }
@@ -78,11 +85,11 @@ public class EditorActivity extends AppCompatActivity {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = PetEntry.GENDER_MALE;
+                        mGender = BookEntry.GENDER_MALE;
                     } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = PetEntry.GENDER_FEMALE;
+                        mGender = BookEntry.GENDER_FEMALE;
                     } else {
-                        mGender = PetEntry.GENDER_UNKNOWN;
+                        mGender = BookEntry.GENDER_UNKNOWN;
                     }
                 }
             }
@@ -90,7 +97,7 @@ public class EditorActivity extends AppCompatActivity {
             // Because AdapterView is an abstract class, onNothingSelected must be defined
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mGender = PetEntry.GENDER_UNKNOWN;
+                mGender = BookEntry.GENDER_UNKNOWN;
             }
         });
     }
@@ -102,12 +109,12 @@ public class EditorActivity extends AppCompatActivity {
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String nameString = mNameEditText.getText().toString().trim();
-        String breedString = mBreedEditText.getText().toString().trim();
-        String weightString = mWeightEditText.getText().toString().trim();
-        int weight = Integer.parseInt(weightString);
+        String priceString = mPriceEditText.getText().toString().trim();
+        String quantityString = mQuantityEditText.getText().toString().trim();
+        int quantity = Integer.parseInt(quantityString);
 
         // Create database helper
-        PetDbHelper mDbHelper = new PetDbHelper(this);
+        BookDbHelper mDbHelper = new BookDbHelper(this);
 
         // Gets the database in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -115,10 +122,12 @@ public class EditorActivity extends AppCompatActivity {
         // Create a ContentValues object where column names are the keys,
         // and pet attributes from the editor are the values.
         ContentValues values = new ContentValues();
-        values.put(PetEntry.COLUMN_PET_NAME, nameString);
-        values.put(PetEntry.COLUMN_PET_BREED, breedString);
-        values.put(PetEntry.COLUMN_PET_GENDER, mGender);
-        values.put(PetEntry.COLUMN_PET_WEIGHT, weight);
+        values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
+        values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, mQuantity);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, suppliernameString);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, supplierphonenumberString);
+
 
         // Insert a new row for pet in the database, returning the ID of that new row.
         long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);

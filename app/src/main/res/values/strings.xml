@@ -48,4 +48,9 @@
 
     <!-- Label for dropdown menu option if the pet is female [CHAR LIMIT=20] -->
     <string name="gender_female">Female</string>
+    <string name="hint_book_price">Price</string>
+    <string name="category_supplier">Supplier_Name</string>
+    <string name="hint_supplier_name">Supplier Name</string>
+    <string name="category_supplier_phone">Supplier Phone Number</string>
+    <string name="hint_supplier_phone_number">Supplier_Phone Number</string>
 </resources>

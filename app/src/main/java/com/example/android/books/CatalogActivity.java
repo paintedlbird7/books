@@ -12,13 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+
 /**
  * Displays list of pets that were entered and stored in the app.
  */
 public class CatalogActivity extends AppCompatActivity {
 
     /** Database helper that will provide us access to the database */
-    private BookDbHelper mDbHelper;
+    private BooksDbHelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class CatalogActivity extends AppCompatActivity {
 
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
-        mDbHelper = new BookDbHelper(this);
+        mDbHelper = new BooksDbHelper(this);
     }
 
     @Override
@@ -94,10 +95,12 @@ public class CatalogActivity extends AppCompatActivity {
 
             // Figure out the index of each column
             int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
-            int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PET_NAME);
-            int breedColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PET_BREED);
-            int genderColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PET_GENDER);
-            int weightColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_PET_WEIGHT);
+            int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_NAME);
+            int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_PRICE);
+            int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_QUANTITY);
+            int suppliernameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER_NAME);
+            int supplierphonenumberColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER);
+
 
             // Iterate through all the returned rows in the cursor
             while (cursor.moveToNext()) {
@@ -105,15 +108,17 @@ public class CatalogActivity extends AppCompatActivity {
                 // at the current row the cursor is on.
                 int currentID = cursor.getInt(idColumnIndex);
                 String currentName = cursor.getString(nameColumnIndex);
-                String currentBreed = cursor.getString(breedColumnIndex);
-                int currentGender = cursor.getInt(genderColumnIndex);
-                int currentWeight = cursor.getInt(weightColumnIndex);
+                String currentPrice = cursor.getString(priceColumnIndex);
+                int currentQuantity = cursor.getInt(quantityColumnIndex);
+                int currentSupplierName = cursor.getInt(suppliernameColumnIndex);
+                int currentSupplierPhoneNumber = cursor.getInt(supplierphonenumberColumnIndex);
                 // Display the values from each column of the current row in the cursor in the TextView
                 displayView.append(("\n" + currentID + " - " +
                         currentName + " - " +
-                        currentBreed + " - " +
-                        currentGender + " - " +
-                        currentWeight));
+                        currentPrice + " - " +
+                        currentQuantity + " - " +
+                          currentSupplierName + " - " +
+                        currentSupplierPhoneNumber));
             }
         } finally {
             // Always close the cursor when you're done reading from it. This releases all its
@@ -132,10 +137,12 @@ public class CatalogActivity extends AppCompatActivity {
         // Create a ContentValues object where column names are the keys,
         // and Toto's pet attributes are the values.
         ContentValues values = new ContentValues();
-        values.put(BookEntry.COLUMN_PET_NAME, "Toto");
-        values.put(BookEntry.COLUMN_PET_BREED, "Terrier");
-        values.put(BookEntry.COLUMN_PET_GENDER, BookEntry.GENDER_MALE);
-        values.put(BookEntry.COLUMN_PET_WEIGHT, 7);
+        values.put(BookEntry.COLUMN_BOOK_NAME, "Toto");
+        values.put(BookEntry.COLUMN_BOOK_PRICE, "Terrier");
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, BookEntry.GENDER_MALE);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, 7);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, 7);
+
 
         // Insert a new row for Toto in the database, returning the ID of that new row.
         // The first argument for db.insert() is the pets table name.

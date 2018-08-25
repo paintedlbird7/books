@@ -92,13 +92,13 @@ public class CatalogActivity extends AppCompatActivity {
             //
             // In the while loop below, iterate through the rows of the cursor and display
             // the information from each column in this order.
-            displayView.setText("The pets table contains " + cursor.getCount() + " books.\n\n");
+            displayView.setText("The books table contains " + cursor.getCount() + " books.\n\n");
             displayView.append(BookEntry._ID + " - " +
                     BookEntry.COLUMN_BOOK_NAME + " - " +
                     BookEntry.COLUMN_BOOK_PRICE + " - " +
                     BookEntry.COLUMN_BOOK_QUANTITY + " - " +
-                    BookEntry.COLUMN_BOOK_SUPPLIER_NAME + " - " +
-                    BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER + "\n");
+                    BookEntry.COLUMN_BOOK_SUPPLIER + " - " +
+                    BookEntry.COLUMN_BOOK_PHONE + "\n");
 
             // Figure out the index of each column
             int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);

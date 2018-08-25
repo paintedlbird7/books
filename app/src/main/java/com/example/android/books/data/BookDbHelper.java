@@ -9,7 +9,7 @@ import com.example.android.books.data.BookContract.BookEntry;
 
 
 /**
- * Database helper for Pets app. Manages database creation and version management.
+ * Database helper for Books app. Manages database creation and version management.
  */
 public class BookDbHelper extends SQLiteOpenHelper {
 
@@ -22,7 +22,6 @@ public class BookDbHelper extends SQLiteOpenHelper {
      * Database version. If you change the database schema, you must increment the database version.
      */
     private static final int DATABASE_VERSION = 1;
-    private BookContract.PetEntry BookEntry;
 
     /**
      * Constructs a new instance of {@link BookDbHelper}.

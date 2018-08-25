@@ -3,7 +3,7 @@ package com.example.android.books.data;
 import android.provider.BaseColumns;
 
 /**
- * API Contract for the Pets app.
+ * API Contract for the Books app.
  */
 public final class BookContract {
 
@@ -15,7 +15,7 @@ public final class BookContract {
      * Inner class that defines constant values for the pets database table.
      * Each entry in the table represents a single pet.
      */
-    public static final class PetEntry implements BaseColumns {
+    public static final class BookEntry implements BaseColumns {
 
         /** Name of database table for pets */
         public final static String TABLE_NAME = "books";
@@ -59,8 +59,9 @@ public final class BookContract {
         public final static String COLUMN_BOOK_PRICE ="price";
 
         public final static String COLUMN_BOOK_QUANTITY ="quantity";
-
-
+        public static String COLUMN_BOOK_SUPPIER;
+        public static String COLUMN_BOOK_PHONE;
+        public String COLUMN_BOOK_SUPPLIER;
 
 
 //        /**

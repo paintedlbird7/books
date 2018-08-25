@@ -55,6 +55,7 @@ public class EditorActivity extends AppCompatActivity {
 
 
 
+
         //setupSpinner();
     }
 
@@ -100,15 +101,15 @@ public class EditorActivity extends AppCompatActivity {
     /**
      * Get user input from editor and save new pet into database.
      */
-    private void insertPet() {
+    private void insertBook() {
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
+        String priceString = mPriceEditText.getText().toString().trim();
         String nameString = mNameEditText.getText().toString().trim();
         String supplierString = mSupplierEditText.getText().toString().trim();
         String phoneString = mPhoneEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
         int quantity = Integer.parseInt(quantityString);
-        String priceString = mQuantityEditText.getText().toString().trim();
         int price = Integer.parseInt(quantityString);
 
         // Create database helper
@@ -122,7 +123,7 @@ public class EditorActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
-        values.put(BookEntry.COLUMN_BOOK_QUANTITY, priceString);
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantityString);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, supplierString);
         values.put(BookEntry.COLUMN_BOOK_PHONE, phoneString);
 
@@ -133,10 +134,10 @@ public class EditorActivity extends AppCompatActivity {
         // Show a toast message depending on whether or not the insertion was successful
         if (newRowId == -1) {
             // If the row ID is -1, then there was an error with insertion.
-            Toast.makeText(this, "Error with saving pet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error with saving book", Toast.LENGTH_SHORT).show();
         } else {
             // Otherwise, the insertion was successful and we can display a toast with the row ID.
-            Toast.makeText(this, "Pet saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Book saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -155,7 +156,7 @@ public class EditorActivity extends AppCompatActivity {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
                 // Save pet to database
-                insertPet();
+                insertBook();
                 // Exit activity
                 finish();
                 return true;

@@ -1,4 +1,4 @@
-package com.example.android.books.data;
+package com.example.android.inventoryappstage1.data;
 
 import android.provider.BaseColumns;
 

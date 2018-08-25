@@ -22,23 +22,8 @@
     <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
     <string name="category_overview">Overview</string>
 
-    <!--&lt;!&ndash; Label for gender information in the editor [CHAR LIMIT=30] &ndash;&gt;-->
-    <!--<string name="category_gender">Gender</string>-->
-
-    <!--&lt;!&ndash; Label for measurement information in the editor [CHAR LIMIT=30] &ndash;&gt;-->
-    <!--<string name="category_measurement">Measurement</string>-->
-
     <!-- Text hint for name field in the editor [CHAR LIMIT=30] -->
     <string name="hint_pet_name">Name</string>
-
-    <!--&lt;!&ndash; Text hint for breed field in the editor [CHAR LIMIT=30] &ndash;&gt;-->
-    <!--<string name="hint_pet_breed">Breed</string>-->
-
-    <!--&lt;!&ndash; Text hint for name field in the editor [CHAR LIMIT=30] &ndash;&gt;-->
-    <!--<string name="hint_pet_weight">Weight</string>-->
-
-    <!-- Units for weight of the pet (kilograms) [CHAR LIMIT=5] -->
-    <!--<string name="unit_pet_weight">kg</string>-->
 
     <!--&lt;!&ndash; Label for dropdown menu option if the pet's gender is unknown [CHAR LIMIT=20] &ndash;&gt;-->
     <string name="gender_unknown">Unknown</string>

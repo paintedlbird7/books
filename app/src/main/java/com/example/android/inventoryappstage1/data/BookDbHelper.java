@@ -1,11 +1,11 @@
-package com.example.android.books.data;
+package com.example.android.inventoryappstage1.data;
 
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.books.data.BookContract.BookEntry;
+import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 
 /**
@@ -16,7 +16,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = BookDbHelper.class.getSimpleName();
 
     /** Name of the database file */
-    private static final String DATABASE_NAME = "books.db.sql";
+    private static final String DATABASE_NAME = "books.db";
 
     /**
      * Database version. If you change the database schema, you must increment the database version.

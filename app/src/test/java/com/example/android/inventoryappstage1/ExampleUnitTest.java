@@ -1,4 +1,4 @@
-package com.example.android.books;
+package com.example.android.inventoryappstage1;
 
 import org.junit.Test;
 

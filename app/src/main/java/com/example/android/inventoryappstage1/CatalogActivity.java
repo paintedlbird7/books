@@ -1,4 +1,4 @@
-package com.example.android.books;
+package com.example.android.inventoryappstage1;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.android.books.data.BookContract;
-import com.example.android.books.data.BookDbHelper;
+import com.example.android.inventoryappstage1.data.BookContract;
+import com.example.android.inventoryappstage1.data.BookDbHelper;
 
 
 /**

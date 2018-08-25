@@ -1,4 +1,4 @@
-package com.example.android.books;
+package com.example.android.inventoryappstage1;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.books.data.BookContract.BookEntry;
-import com.example.android.books.data.BookDbHelper;
+import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
+import com.example.android.inventoryappstage1.data.BookDbHelper;
 
 /**
  * Allows user to create a new book or edit an existing one.

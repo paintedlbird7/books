@@ -1,4 +1,4 @@
-package com.example.android.books;
+package com.example.android.inventoryappstage1;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

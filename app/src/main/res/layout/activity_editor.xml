@@ -81,7 +81,7 @@
 
     <!-- Measurement category -->
     <LinearLayout
-        android:id="@+id/supplier_name"
+        android:id="@+id/supplier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -100,15 +100,15 @@
 
             <!-- Weight field -->
             <EditText
-                android:id="@+id/edit_supplier_name"
-                android:hint="@string/hint_supplier_name"
+                android:id="@+id/edit_supplier"
+                android:hint="@string/hint_supplier"
                 android:inputType="textNoSuggestions"
                 style="@style/EditorFieldStyle" />
 
 
         <!-- Label -->
         <TextView
-            android:text="@string/category_supplier_phone"
+            android:text="@string/category_phone"
             style="@style/CategoryStyle" />
 
         <!-- Input fields -->
@@ -128,7 +128,7 @@
     </LinearLayout>
     <!-- Measurement category -->
     <LinearLayout
-        android:id="@+id/edit_supplier_phone_number2"
+        android:id="@+id/edit_supplier_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -136,7 +136,7 @@
 
         <!-- Label -->
         <TextView
-            android:text="@string/category_supplier_phone"
+            android:text="@string/category_phone"
             style="@style/CategoryStyle" />
 
         <!-- Input fields -->
@@ -148,8 +148,8 @@
 
             <!-- Weight field -->
             <EditText
-                android:id="@+id/edit_supplier_phone_number"
-                android:hint="@string/hint_supplier_phone_number"
+                android:id="@+id/edit_phone"
+                android:hint="@string/hint_phone_number"
                 android:inputType="textNoSuggestions"
                 style="@style/EditorFieldStyle" />
 

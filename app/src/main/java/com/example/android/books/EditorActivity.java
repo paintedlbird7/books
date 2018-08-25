@@ -32,11 +32,14 @@ public class EditorActivity extends AppCompatActivity {
     /** EditText field to enter the pet's weight */
     private EditText mQuantityEditText;
 
-    /** EditText field to enter the pet's gender */
-    private EditText mSupplierNameEditText;
+    /** EditText field to enter the pet's weight */
+    private EditText mAuthorEditText;
 
     /** EditText field to enter the pet's gender */
-    private EditText mSupplierPhoneNumberEditText;
+    private EditText mSupplierEditText;
+
+    /** EditText field to enter the pet's gender */
+    private EditText mPhoneEditText;
 
 //    /**
 //     * Gender of the pet. The possible valid values are in the PetContract.java file:
@@ -55,12 +58,12 @@ public class EditorActivity extends AppCompatActivity {
         mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
         mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
         //mSupplierNameSpinner = (Spinner) findViewById(R.id.spinner_gender);
-        mSupplierNameEditText = (EditText) findViewById(R.id.edit_supplier_name);
-        mSupplierPhoneNumberEditText = (EditText) findViewById(R.id.edit_supplier_phone_number);
+        mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
+        mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
 
 
 
-        setupSpinner();
+        //setupSpinner();
     }
 
     /**
@@ -125,8 +128,8 @@ public class EditorActivity extends AppCompatActivity {
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, mQuantity);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, suppliernameString);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, supplierphonenumberString);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, supplierString);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, phonenString);
 
 
         // Insert a new row for pet in the database, returning the ID of that new row.

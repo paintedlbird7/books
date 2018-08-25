@@ -55,6 +55,9 @@ public class CatalogActivity extends AppCompatActivity {
         // Create and/or open a database to read from it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
+        //TODO add author
+        //BookEntry = one book same as the PetEntry pets app
+
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
         String[] projection = {
@@ -62,8 +65,8 @@ public class CatalogActivity extends AppCompatActivity {
                 BookEntry.COLUMN_BOOK_NAME,
                 BookEntry.COLUMN_BOOK_PRICE,
                 BookEntry.COLUMN_BOOK_QUANTITY,
-                BookEntry.COLUMN_BOOK_SUPPLIER_NAME,
-                BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER,};
+                BookEntry.COLUMN_BOOK_SUPPLIER,
+                BookEntry.COLUMN_BOOK_PHONE,};
 
         // Perform a query on the pets table
         Cursor cursor = db.query(
@@ -110,15 +113,15 @@ public class CatalogActivity extends AppCompatActivity {
                 String currentName = cursor.getString(nameColumnIndex);
                 String currentPrice = cursor.getString(priceColumnIndex);
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
-                int currentSupplierName = cursor.getInt(suppliernameColumnIndex);
-                int currentSupplierPhoneNumber = cursor.getInt(supplierphonenumberColumnIndex);
+                int currentSupplier = cursor.getInt(supplierColumnIndex);
+                int currentPhone = cursor.getInt(phoneColumnIndex);
                 // Display the values from each column of the current row in the cursor in the TextView
                 displayView.append(("\n" + currentID + " - " +
                         currentName + " - " +
                         currentPrice + " - " +
                         currentQuantity + " - " +
-                          currentSupplierName + " - " +
-                        currentSupplierPhoneNumber));
+                          currentSupplier + " - " +
+                        currentPhone));
             }
         } finally {
             // Always close the cursor when you're done reading from it. This releases all its
@@ -139,9 +142,9 @@ public class CatalogActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "Toto");
         values.put(BookEntry.COLUMN_BOOK_PRICE, "Terrier");
-        values.put(BookEntry.COLUMN_BOOK_QUANTITY, BookEntry.GENDER_MALE);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, 7);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, 7);
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, 14);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, 7);
+        values.put(BookEntry.COLUMN_BOOK_PHONE, 7);
 
 
         // Insert a new row for Toto in the database, returning the ID of that new row.

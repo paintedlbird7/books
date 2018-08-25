@@ -57,10 +57,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Label -->
-        <TextView
-            android:text="@string/category_gender"
-            style="@style/CategoryStyle" />
+        <!--&lt;!&ndash; Label &ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:text="@string/category_gender"-->
+            <!--style="@style/CategoryStyle" />-->
 
         <!-- Input field -->
         <LinearLayout

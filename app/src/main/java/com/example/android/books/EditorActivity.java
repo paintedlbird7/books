@@ -12,11 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.books.data.BookDbHelper;
 import com.example.android.books.data.PetContract.PetEntry;
-import com.example.android.books.data.PetDbHelper;
 
 /**
  * Allows user to create a new pet or edit an existing one.
@@ -31,9 +30,6 @@ public class EditorActivity extends AppCompatActivity {
 
     /** EditText field to enter the pet's weight */
     private EditText mQuantityEditText;
-
-    /** EditText field to enter the pet's weight */
-    private EditText mAuthorEditText;
 
     /** EditText field to enter the pet's gender */
     private EditText mSupplierEditText;
@@ -66,44 +62,44 @@ public class EditorActivity extends AppCompatActivity {
         //setupSpinner();
     }
 
-    /**
-     * Setup the dropdown spinner that allows the user to select the gender of the pet.
-     */
-    private void setupSpinner() {
-        // Create adapter for spinner. The list options are from the String array it will use
-        // the spinner will use the default layout
-        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.array_gender_options, android.R.layout.simple_spinner_item);
-
-        // Specify dropdown layout style - simple list view with 1 item per line
-        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-
-        // Apply the adapter to the spinner
-        mGenderSpinner.setAdapter(genderSpinnerAdapter);
-
-        // Set the integer mSelected to the constant values
-        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selection = (String) parent.getItemAtPosition(position);
-                if (!TextUtils.isEmpty(selection)) {
-                    if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = BookEntry.GENDER_MALE;
-                    } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = BookEntry.GENDER_FEMALE;
-                    } else {
-                        mGender = BookEntry.GENDER_UNKNOWN;
-                    }
-                }
-            }
-
-            // Because AdapterView is an abstract class, onNothingSelected must be defined
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                mGender = BookEntry.GENDER_UNKNOWN;
-            }
-        });
-    }
+//    /**
+//     * Setup the dropdown spinner that allows the user to select the gender of the pet.
+//     */
+//    private void setupSpinner() {
+//        // Create adapter for spinner. The list options are from the String array it will use
+//        // the spinner will use the default layout
+//        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
+//                R.array.array_gender_options, android.R.layout.simple_spinner_item);
+//
+//        // Specify dropdown layout style - simple list view with 1 item per line
+//        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+//
+//        // Apply the adapter to the spinner
+//        mGenderSpinner.setAdapter(genderSpinnerAdapter);
+//
+//        // Set the integer mSelected to the constant values
+//        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String selection = (String) parent.getItemAtPosition(position);
+//                if (!TextUtils.isEmpty(selection)) {
+//                    if (selection.equals(getString(R.string.gender_male))) {
+//                        mGender = BookEntry.GENDER_MALE;
+//                    } else if (selection.equals(getString(R.string.gender_female))) {
+//                        mGender = BookEntry.GENDER_FEMALE;
+//                    } else {
+//                        mGender = BookEntry.GENDER_UNKNOWN;
+//                    }
+//                }
+//            }
+//
+//            // Because AdapterView is an abstract class, onNothingSelected must be defined
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                mGender = BookEntry.GENDER_UNKNOWN;
+//            }
+//        });
+//    }
 
     /**
      * Get user input from editor and save new pet into database.
@@ -112,9 +108,12 @@ public class EditorActivity extends AppCompatActivity {
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String nameString = mNameEditText.getText().toString().trim();
-        String priceString = mPriceEditText.getText().toString().trim();
+        String supplierString = mSupplierEditText.getText().toString().trim();
+        String phoneString = mPhoneEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
         int quantity = Integer.parseInt(quantityString);
+        String priceString = mQuantityEditText.getText().toString().trim();
+        int price = Integer.parseInt(quantityString);
 
         // Create database helper
         BookDbHelper mDbHelper = new BookDbHelper(this);
@@ -127,9 +126,9 @@ public class EditorActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
-        values.put(BookEntry.COLUMN_BOOK_QUANTITY, mQuantity);
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, priceString);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, supplierString);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, phonenString);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, phoneString);
 
 
         // Insert a new row for pet in the database, returning the ID of that new row.

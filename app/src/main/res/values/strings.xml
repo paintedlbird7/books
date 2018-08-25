@@ -41,13 +41,13 @@
     <!--<string name="unit_pet_weight">kg</string>-->
 
     <!--&lt;!&ndash; Label for dropdown menu option if the pet's gender is unknown [CHAR LIMIT=20] &ndash;&gt;-->
-    <!--<string name="gender_unknown">Unknown</string>-->
+    <string name="gender_unknown">Unknown</string>
 
     <!--&lt;!&ndash; Label for dropdown menu option if the pet is male [CHAR LIMIT=20] &ndash;&gt;-->
-    <!--<string name="gender_male">Male</string>-->
+    <string name="gender_male">Male</string>
 
     <!--&lt;!&ndash; Label for dropdown menu option if the pet is female [CHAR LIMIT=20] &ndash;&gt;-->
-    <!--<string name="gender_female">Female</string>-->
+    <string name="gender_female">Female</string>
     <string name="hint_book_price">Price</string>
     <string name="category_supplier">Supplier</string>
     <string name="hint_phone_number">Phone Number</string>

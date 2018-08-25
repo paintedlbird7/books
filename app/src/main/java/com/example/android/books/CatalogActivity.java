@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.android.books.data.BookContract;
+import com.example.android.books.data.BookDbHelper;
+
 
 /**
  * Displays list of pets that were entered and stored in the app.
@@ -19,7 +22,8 @@ import android.widget.TextView;
 public class CatalogActivity extends AppCompatActivity {
 
     /** Database helper that will provide us access to the database */
-    private BooksDbHelper mDbHelper;
+    private BookDbHelper mDbHelper;
+    private BookContract.BookEntry BookEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class CatalogActivity extends AppCompatActivity {
 
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
-        mDbHelper = new BooksDbHelper(this);
+        mDbHelper = new BookDbHelper(this);
     }
 
     @Override
@@ -101,8 +105,8 @@ public class CatalogActivity extends AppCompatActivity {
             int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_NAME);
             int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_PRICE);
             int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_QUANTITY);
-            int suppliernameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER_NAME);
-            int supplierphonenumberColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER);
+            int supplierColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER);
+            int phoneColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_PHONE);
 
 
             // Iterate through all the returned rows in the cursor
@@ -120,7 +124,7 @@ public class CatalogActivity extends AppCompatActivity {
                         currentName + " - " +
                         currentPrice + " - " +
                         currentQuantity + " - " +
-                          currentSupplier + " - " +
+                        currentSupplier + " - " +
                         currentPhone));
             }
         } finally {
@@ -140,11 +144,11 @@ public class CatalogActivity extends AppCompatActivity {
         // Create a ContentValues object where column names are the keys,
         // and Toto's pet attributes are the values.
         ContentValues values = new ContentValues();
-        values.put(BookEntry.COLUMN_BOOK_NAME, "Toto");
-        values.put(BookEntry.COLUMN_BOOK_PRICE, "Terrier");
+        values.put(BookEntry.COLUMN_BOOK_NAME, "Frankenstein");
+        values.put(BookEntry.COLUMN_BOOK_PRICE, "5");
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 14);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, 7);
-        values.put(BookEntry.COLUMN_BOOK_PHONE, 7);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "booksm");
+        values.put(BookEntry.COLUMN_BOOK_PHONE, "4088390987");
 
 
         // Insert a new row for Toto in the database, returning the ID of that new row.

@@ -14,31 +14,26 @@ import com.example.android.books.data.BookContract.BookEntry;
 import com.example.android.books.data.BookDbHelper;
 
 /**
- * Allows user to create a new pet or edit an existing one.
+ * Allows user to create a new book or edit an existing one.
  */
 public class EditorActivity extends AppCompatActivity {
 
-    /** EditText field to enter the pet's name */
+    /** EditText field to enter the book's name */
     private EditText mNameEditText;
 
-    /** EditText field to enter the pet's breed */
+    /** EditText field to enter the book's price */
     private EditText mPriceEditText;
 
-    /** EditText field to enter the pet's weight */
+    /** EditText field to enter the book's quantity */
     private EditText mQuantityEditText;
 
-    /** EditText field to enter the pet's gender */
+    /** EditText field to enter the book's supplier */
     private EditText mSupplierEditText;
 
-    /** EditText field to enter the pet's gender */
+    /** EditText field to enter the book's supplier's phone. */
     private EditText mPhoneEditText;
 
-//    /**
-//     * Gender of the pet. The possible valid values are in the PetContract.java file:
-//     * {@link BookEntry#GENDER_UNKNOWN}, {@link BookEntry#GENDER_MALE}, or
-//     * {@link BookEntry#GENDER_FEMALE}.
-//     */
-    //private int mGender = BookEntry.GENDER_UNKNOWN;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,50 +51,10 @@ public class EditorActivity extends AppCompatActivity {
 
 
 
-        //setupSpinner();
     }
 
-//    /**
-//     * Setup the dropdown spinner that allows the user to select the gender of the pet.
-//     */
-//    private void setupSpinner() {
-//        // Create adapter for spinner. The list options are from the String array it will use
-//        // the spinner will use the default layout
-//        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this,
-//                R.array.array_gender_options, android.R.layout.simple_spinner_item);
-//
-//        // Specify dropdown layout style - simple list view with 1 item per line
-//        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-//
-//        // Apply the adapter to the spinner
-//        mGenderSpinner.setAdapter(genderSpinnerAdapter);
-//
-//        // Set the integer mSelected to the constant values
-//        mGenderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String selection = (String) parent.getItemAtPosition(position);
-//                if (!TextUtils.isEmpty(selection)) {
-//                    if (selection.equals(getString(R.string.gender_male))) {
-//                        mGender = BookEntry.GENDER_MALE;
-//                    } else if (selection.equals(getString(R.string.gender_female))) {
-//                        mGender = BookEntry.GENDER_FEMALE;
-//                    } else {
-//                        mGender = BookEntry.GENDER_UNKNOWN;
-//                    }
-//                }
-//            }
-//
-//            // Because AdapterView is an abstract class, onNothingSelected must be defined
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                mGender = BookEntry.GENDER_UNKNOWN;
-//            }
-//        });
-//    }
-
     /**
-     * Get user input from editor and save new pet into database.
+     * Get user input from editor and save new book into database.
      */
     private void insertBook() {
         // Read from input fields
@@ -119,7 +74,7 @@ public class EditorActivity extends AppCompatActivity {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         // Create a ContentValues object where column names are the keys,
-        // and pet attributes from the editor are the values.
+        // and book attributes from the editor are the values.
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
@@ -128,7 +83,7 @@ public class EditorActivity extends AppCompatActivity {
         values.put(BookEntry.COLUMN_BOOK_PHONE, phoneString);
 
 
-        // Insert a new row for pet in the database, returning the ID of that new row.
+        // Insert a new row for book in the database, returning the ID of that new row.
         long newRowId = db.insert(BookEntry.TABLE_NAME, null, values);
 
         // Show a toast message depending on whether or not the insertion was successful
@@ -155,7 +110,7 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
-                // Save pet to database
+                // Save book to database
                 insertBook();
                 // Exit activity
                 finish();

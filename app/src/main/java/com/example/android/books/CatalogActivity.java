@@ -17,7 +17,7 @@ import com.example.android.books.data.BookDbHelper;
 
 
 /**
- * Displays list of pets that were entered and stored in the app.
+ * Displays list of books that were entered and stored in the app.
  */
 public class CatalogActivity extends AppCompatActivity {
 
@@ -53,14 +53,14 @@ public class CatalogActivity extends AppCompatActivity {
 
     /**
      * Temporary helper method to display information in the onscreen TextView about the state of
-     * the pets database.
+     * the books database.
      */
     private void displayDatabaseInfo() {
         // Create and/or open a database to read from it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
         //TODO add author
-        //BookEntry = one book same as the PetEntry pets app
+        //BookEntry = one book same as the PetEntry books app
 
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
@@ -72,7 +72,7 @@ public class CatalogActivity extends AppCompatActivity {
                 BookEntry.COLUMN_BOOK_SUPPLIER,
                 BookEntry.COLUMN_BOOK_PHONE,};
 
-        // Perform a query on the pets table
+        // Perform a query on the books table
         Cursor cursor = db.query(
                 BookEntry.TABLE_NAME,   // The table to query
                 projection,            // The columns to return
@@ -87,7 +87,7 @@ public class CatalogActivity extends AppCompatActivity {
         try {
             // Create a header in the Text View that looks like this:
             //
-            // The pets table contains <number of rows in Cursor> pets.
+            // The books table contains <number of rows in Cursor> books.
             // _id - name - supplier - phone - quantity - price
             //
             // In the while loop below, iterate through the rows of the cursor and display
@@ -135,14 +135,14 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     /**
-     * Helper method to insert hardcoded pet data into the database. For debugging purposes only.
+     * Helper method to insert hardcoded book data into the database. For debugging purposes only.
      */
     private void insertPet() {
         // Gets the database in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         // Create a ContentValues object where column names are the keys,
-        // and Toto's pet attributes are the values.
+        // and Toto's book attributes are the values.
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "Frankenstein");
         values.put(BookEntry.COLUMN_BOOK_PRICE, "5");
@@ -152,7 +152,7 @@ public class CatalogActivity extends AppCompatActivity {
 
 
         // Insert a new row for Toto in the database, returning the ID of that new row.
-        // The first argument for db.insert() is the pets table name.
+        // The first argument for db.insert() is the books table name.
         // The second argument provides the name of a column in which the framework
         // can insert NULL in the event that the ContentValues is empty (if
         // this is set to "null", then the framework will not insert a row when
@@ -175,7 +175,7 @@ public class CatalogActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Insert dummy data" menu option
             case R.id.action_insert_dummy_data:
-                insertPet();
+                insertBook();
                 displayDatabaseInfo();
                 return true;
             // Respond to a click on the "Delete all entries" menu option
@@ -184,5 +184,8 @@ public class CatalogActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void insertBook() {
     }
 }

@@ -5,17 +5,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.android.books.data.BookContract.BookEntry;
 import com.example.android.books.data.BookDbHelper;
-import com.example.android.books.data.PetContract.PetEntry;
 
 /**
  * Allows user to create a new pet or edit an existing one.
@@ -42,7 +38,7 @@ public class EditorActivity extends AppCompatActivity {
 //     * {@link BookEntry#GENDER_UNKNOWN}, {@link BookEntry#GENDER_MALE}, or
 //     * {@link BookEntry#GENDER_FEMALE}.
 //     */
-    private int mGender = BookEntry.GENDER_UNKNOWN;
+    //private int mGender = BookEntry.GENDER_UNKNOWN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,12 +123,12 @@ public class EditorActivity extends AppCompatActivity {
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
         values.put(BookEntry.COLUMN_BOOK_PRICE, priceString);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, priceString);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_NAME, supplierString);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER_PHONE_NUMBER, phoneString);
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, supplierString);
+        values.put(BookEntry.COLUMN_BOOK_PHONE, phoneString);
 
 
         // Insert a new row for pet in the database, returning the ID of that new row.
-        long newRowId = db.insert(PetEntry.TABLE_NAME, null, values);
+        long newRowId = db.insert(BookEntry.TABLE_NAME, null, values);
 
         // Show a toast message depending on whether or not the insertion was successful
         if (newRowId == -1) {

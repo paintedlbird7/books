@@ -88,7 +88,7 @@ public class CatalogActivity extends AppCompatActivity {
             // Create a header in the Text View that looks like this:
             //
             // The pets table contains <number of rows in Cursor> pets.
-            // _id - name - breed - gender - weight
+            // _id - name - supplier - phone - quantity - price
             //
             // In the while loop below, iterate through the rows of the cursor and display
             // the information from each column in this order.

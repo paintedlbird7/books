@@ -27,6 +27,14 @@ public final class BookContract {
          */
         public final static String _ID = BaseColumns._ID;
 
+        //
+//        /**
+//         * Breed of the pet.
+//         *
+//         * Type: TEXT
+//         */
+//        public final static String COLUMN_BOOK_AUTHOR = "author";
+
         /**
          * Name of the pet.
          *
@@ -34,34 +42,13 @@ public final class BookContract {
          */
         public final static String COLUMN_BOOK_NAME ="name";
 
-        /**
-         * Breed of the pet.
-         *
-         * Type: TEXT
-         */
-        public final static String COLUMN_BOOK_AUTHOR = "author";
+        public final static String COLUMN_BOOK_SUPPLIER = "supplier";
 
-        /**
-         * Gender of the pet.
-//
-         *
-         * Type: INTEGER
-         */
-        public final static String COLUMN_SUPPLIER = "supplier";
-
-        /**
-         * Weight of the pet.
-         *
-         * Type: INTEGER
-         */
-        public final static String COLUMN_PHONE = "phone";
+        public final static String COLUMN_BOOK_PHONE = "phone";
 
         public final static String COLUMN_BOOK_PRICE ="price";
 
         public final static String COLUMN_BOOK_QUANTITY ="quantity";
-        public static String COLUMN_BOOK_SUPPIER;
-        public static String COLUMN_BOOK_PHONE;
-        public String COLUMN_BOOK_SUPPLIER;
 
 
 //        /**

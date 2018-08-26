@@ -139,7 +139,7 @@ public class CatalogActivity extends AppCompatActivity {
     /**
      * Helper method to insert hardcoded book data into the database. For debugging purposes only.
      */
-    private void insertPet() {
+    private void insertBook() {
         // Gets the database in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -188,6 +188,4 @@ public class CatalogActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void insertBook() {
-    }
 }

@@ -61,9 +61,6 @@ public class CatalogActivity extends AppCompatActivity {
         // Create and/or open a database to read from it
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
-        //TODO add author
-        //BookEntry = one book same as the PetEntry books app
-
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
         String[] projection = {

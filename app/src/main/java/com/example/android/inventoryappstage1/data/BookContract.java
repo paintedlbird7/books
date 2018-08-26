@@ -9,7 +9,8 @@ public final class BookContract {
 
     // To prevent someone from accidentally instantiating the contract class,
     // give it an empty constructor.
-    private BookContract() {}
+    private BookContract() {
+    }
 
     /**
      * Inner class that defines constant values for the pets database table.
@@ -17,34 +18,33 @@ public final class BookContract {
      */
     public static final class BookEntry implements BaseColumns {
 
-        /** Name of database table for pets */
+        /**
+         * Name of database table for pets
+         */
         public final static String TABLE_NAME = "books";
 
         /**
          * Unique ID number for the book (only for use in the database table).
-         *
+         * <p>
          * Type: INTEGER
          */
         public final static String _ID = BaseColumns._ID;
 
-
-
         /**
          * Name of the book.
-         *
+         * <p>
          * Type: TEXT
          */
-        public final static String COLUMN_BOOK_NAME ="name";
+        public final static String COLUMN_BOOK_NAME = "name";
 
         public final static String COLUMN_BOOK_SUPPLIER = "supplier";
 
         public final static String COLUMN_BOOK_PHONE = "phone";
 
-        public final static String COLUMN_BOOK_PRICE ="price";
+        public final static String COLUMN_BOOK_PRICE = "price";
 
-        public final static String COLUMN_BOOK_QUANTITY ="quantity";
+        public final static String COLUMN_BOOK_QUANTITY = "quantity";
 
     }
 
 }
-

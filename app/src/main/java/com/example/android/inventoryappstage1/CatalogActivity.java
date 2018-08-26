@@ -21,7 +21,9 @@ import com.example.android.inventoryappstage1.data.BookDbHelper;
  */
 public class CatalogActivity extends AppCompatActivity {
 
-    /** Database helper that will provide us access to the database */
+    /**
+     * Database helper that will provide us access to the database
+     */
     private BookDbHelper mDbHelper;
     private BookContract.BookEntry BookEntry;
 

@@ -18,21 +18,30 @@ import com.example.android.inventoryappstage1.data.BookDbHelper;
  */
 public class EditorActivity extends AppCompatActivity {
 
-    /** EditText field to enter the book's name */
+    /**
+     * EditText field to enter the book's name
+     */
     private EditText mNameEditText;
 
-    /** EditText field to enter the book's price */
+    /**
+     * EditText field to enter the book's price
+     */
     private EditText mPriceEditText;
 
-    /** EditText field to enter the book's quantity */
+    /**
+     * EditText field to enter the book's quantity
+     */
     private EditText mQuantityEditText;
 
-    /** EditText field to enter the book's supplier */
+    /**
+     * EditText field to enter the book's supplier
+     */
     private EditText mSupplierEditText;
 
-    /** EditText field to enter the book's supplier's phone. */
+    /**
+     * EditText field to enter the book's supplier's phone.
+     */
     private EditText mPhoneEditText;
-
 
 
     @Override
@@ -44,13 +53,8 @@ public class EditorActivity extends AppCompatActivity {
         mNameEditText = (EditText) findViewById(R.id.edit_book_name);
         mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
         mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
-        //mSupplierNameSpinner = (Spinner) findViewById(R.id.spinner_gender);
         mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
         mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
-
-
-
-
     }
 
     /**

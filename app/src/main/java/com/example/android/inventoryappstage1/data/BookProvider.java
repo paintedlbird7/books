@@ -12,9 +12,6 @@ import android.util.Log;
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 
-import java.security.Provider;
-
-
 
 /**
  * {@link ContentProvider} for Pets app.
@@ -25,10 +22,10 @@ public class BookProvider extends ContentProvider {
     public static final String LOG_TAG = BookProvider.class.getSimpleName();
 
     /** URI matcher code for the content URI for the pets table */
-    private static final int PETS = 100;
+    private static final int BOOKS = 100;
 
     /** URI matcher code for the content URI for a single pet in the pets table */
-    private static final int PET_ID = 101;
+    private static final int BOOK_ID = 101;
 
     /**
      * UriMatcher object to match a content URI to a corresponding code.
@@ -141,28 +138,34 @@ public class BookProvider extends ContentProvider {
             throw new IllegalArgumentException("Book requires a name");
         }
 
-        // Check that the name is not null
+        // Check that the price is not null
         String price = values.getAsString(BookEntry.COLUMN_BOOK_PRICE);
         if (price == null) {
             throw new IllegalArgumentException("Book requires a price");
         }
 
-        // If the weight is provided, check that it's greater than or equal to 0 kg
-        Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-        if (quantity != null && quantity < 0) {
-            throw new IllegalArgumentException("Book requires a valid quantity");
-        }
-
-        // Check that the name is not null
+        // Check that the supplier is not null
         String supplier = values.getAsString(BookEntry.COLUMN_BOOK_SUPPLIER);
         if (supplier == null) {
             throw new IllegalArgumentException("Book requires a supplier");
         }
 
-        // Check that the name is not null
+        // Check that the phone is not null
         String phone = values.getAsString(BookEntry.COLUMN_BOOK_PHONE);
         if (phone == null) {
             throw new IllegalArgumentException("Book requires a supplier phone");
+        }
+
+        //        // Check that the gender is valid
+//        Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
+//        if (quantity == null || !BookEntry.isValidQuantity(quantity)) {
+//            throw new IllegalArgumentException("Book requires valid gender");
+//        }
+
+        // If the weight is provided, check that it's greater than or equal to 0 kg
+        Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
+        if (quantity != null && quantity < 0) {
+            throw new IllegalArgumentException("Book requires a valid quantity");
         }
 
         // Get writeable database
@@ -188,7 +191,7 @@ public class BookProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match) {
             case BOOKS:
-                return updatePet(uri, contentValues, selection, selectionArgs);
+                return updateBook(uri, contentValues, selection, selectionArgs);
             case BOOK_ID:
                 // For the PET_ID code, extract out the ID from the URI,
                 // so we know which row to update. Selection will be "_id=?" and selection
@@ -229,15 +232,26 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-        //TODO DO SAME for rest ^^
-         //If the {@link PetEntry#COLUMN_BOOK_QUANTITY} key is present,
-         //check that the gender value is valid.
+//        //TODO DO SAME for rest ^^
+//         //If the {@link PetEntry#COLUMN_BOOK_QUANTITY} key is present,
+//         //check that the gender value is valid.
+//        if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
+//            Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
+//            if (quantity == null || !BookEntry.isValidQuantity(quantity)) {
+//                throw new IllegalArgumentException("Book requires a valid quantity");
+//            }
+//        }
+
+        // If the {@link PetEntry#COLUMN_PET_WEIGHT} key is present,
+        // check that the weight value is valid.
         if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
-            Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-            if (quantity == null || !BookEntry.isValidQuantity(quantity)) {
-                throw new IllegalArgumentException("Book requires a valid quantity");
+            // Check that the weight is greater than or equal to 0 kg
+            Integer weight = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
+            if (weight != null && weight < 0) {
+                throw new IllegalArgumentException("Book requires valid weight");
             }
         }
+
         // If the {@link PetEntry#COLUMN_BOOK_SUPPLIER} key is present,
         // check that the name value is not null.
         if (values.containsKey(BookEntry.COLUMN_BOOK_SUPPLIER)) {

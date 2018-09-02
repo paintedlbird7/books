@@ -50,19 +50,19 @@ public class CatalogActivity extends AppCompatActivity implements
         });
 
         // Find the ListView which will be populated with the pet data
-        ListView petListView = (ListView) findViewById(R.id.list);
+        ListView bookListView = (ListView) findViewById(R.id.list);
 
         // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
         View emptyView = findViewById(R.id.empty_view);
-        petListView.setEmptyView(emptyView);
+        bookListView.setEmptyView(emptyView);
 
         // Setup an Adapter to create a list item for each row of pet data in the Cursor.
         // There is no pet data yet (until the loader finishes) so pass in null for the Cursor.
         mCursorAdapter = new BookCursorAdapter(this, null);
-        petListView.setAdapter(mCursorAdapter);
+        bookListView.setAdapter(mCursorAdapter);
 
         // Setup the item click listener
-        petListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 // Create new intent to go to {@link EditorActivity}
@@ -73,10 +73,10 @@ public class CatalogActivity extends AppCompatActivity implements
                 // {@link PetEntry#CONTENT_URI}.
                 // For example, the URI would be "content://com.example.android.pets/pets/2"
                 // if the pet with ID 2 was clicked on.
-                Uri currentPetUri = ContentUris.withAppendedId(BookContract.BookEntry.CONTENT_URI, id);
+                Uri currentBookUri = ContentUris.withAppendedId(BookContract.BookEntry.CONTENT_URI, id);
 
                 // Set the URI on the data field of the intent
-                intent.setData(currentPetUri);
+                intent.setData(currentBookUri);
 
                 // Launch the {@link EditorActivity} to display the data for the current pet.
                 startActivity(intent);

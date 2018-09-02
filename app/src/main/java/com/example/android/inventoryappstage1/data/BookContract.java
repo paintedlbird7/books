@@ -1,15 +1,15 @@
 package com.example.android.inventoryappstage1.data;
 
 
-import android.net.Uri;
 import android.content.ContentResolver;
-import android.provider.BaseColumns;
 import android.net.Uri;
+import android.provider.BaseColumns;
 
 /**
  * API Contract for the Pets app.
  */
 public final class BookContract {
+
 
     // To prevent someone from accidentally instantiating the contract class,
     // give it an empty constructor.
@@ -35,7 +35,8 @@ public final class BookContract {
      * looking at pet data. content://com.example.android.pets/staff/ will fail,
      * as the ContentProvider hasn't been given any information on what to do with "staff".
      */
-    public static final String PATH_PETS = "books";
+    public static final String PATH_BOOKS = "books";
+
 
     /**
      * Inner class that defines constant values for the pets database table.

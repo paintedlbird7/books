@@ -70,8 +70,8 @@ public class CatalogActivity extends AppCompatActivity implements
 
                 // Form the content URI that represents the specific book that was clicked on,
                 // by appending the "id" (passed as input to this method) onto the
-                // {@link PetEntry#CONTENT_URI}.
-                // For example, the URI would be "content://com.example.android.pets/pets/2"
+                // {@link BookEntry#CONTENT_URI}.
+                // For example, the URI would be "content://com.example.android.books/books/2"
                 // if the book with ID 2 was clicked on.
                 Uri currentBookUri = ContentUris.withAppendedId(BookContract.BookEntry.CONTENT_URI, id);
 
@@ -111,13 +111,13 @@ public class CatalogActivity extends AppCompatActivity implements
 
         // Insert a new row for Toto into the provider using the ContentResolver.
         // Use the {@link PetEntry#CONTENT_URI} to indicate that we want to insert
-        // into the pets database table.
+        // into the books database table.
         // Receive the new content URI that will allow us to access Toto's data in the future.
         Uri newUri = getContentResolver().insert(BookContract.BookEntry.CONTENT_URI, values);
     }
 
     /**
-     * Helper method to delete all pets in the database.
+     * Helper method to delete all books in the database.
      */
     private void deleteAllBooks() {
         int rowsDeleted = getContentResolver().delete(BookContract.BookEntry.CONTENT_URI, null, null);
@@ -174,7 +174,7 @@ public class CatalogActivity extends AppCompatActivity implements
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Update {@link PetCursorAdapter} with this new cursor containing updated book data
+        // Update {@link BookCursorAdapter} with this new cursor containing updated book data
         mCursorAdapter.swapCursor(data);
     }
 

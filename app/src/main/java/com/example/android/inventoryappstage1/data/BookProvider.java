@@ -48,7 +48,7 @@ public class BookProvider extends ContentProvider {
         sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, BookContract.PATH_BOOKS, BOOKS);
 
         // The content URI of the form "content://com.example.android.books/books/#" will map to the
-        // integer code {@link #PET_ID}. This URI is used to provide access to ONE single row
+        // integer code {@link #BOOK_ID}. This URI is used to provide access to ONE single row
         // of the books table.
         //
         // In this case, the "#" wildcard is used where "#" can be substituted for an integer.
@@ -87,7 +87,7 @@ public class BookProvider extends ContentProvider {
                         null, null, sortOrder);
                 break;
             case BOOK_ID:
-                // For the PET_ID code, extract out the ID from the URI.
+                // For the BOOK_ID code, extract out the ID from the URI.
                 // For an example URI such as "content://com.example.android.books/books/3",
                 // the selection will be "_id=?" and the selection argument will be a
                 // String array containing the actual ID of 3 in this case.
@@ -193,7 +193,7 @@ public class BookProvider extends ContentProvider {
             case BOOKS:
                 return updateBook(uri, contentValues, selection, selectionArgs);
             case BOOK_ID:
-                // For the PET_ID code, extract out the ID from the URI,
+                // For the BOOK_ID code, extract out the ID from the URI,
                 // so we know which row to update. Selection will be "_id=?" and selection
                 // arguments will be a String array containing the actual ID.
                 selection = BookEntry._ID + "=?";

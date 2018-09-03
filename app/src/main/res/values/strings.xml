@@ -35,8 +35,8 @@
     <string name="hint_supplier">Name</string>
 
     <string name="hint_book_name">Book Name</string>
-    <string name="empty_view_title_text">Empty view title text</string>
-    <string name="empty_view_subtitle_text">Empty view subtitle text</string>
+    <!--<string name="empty_view_title_text">Empty view title text</string>-->
+    <!--<string name="empty_view_subtitle_text">Empty view subtitle text</string>-->
 
     <!-- Toast message in editor when current book was successfully deleted [CHAR LIMIT=NONE] -->
     <string name="editor_delete_book_successful">Book deleted</string>
@@ -72,7 +72,11 @@
 
     <!-- Dialog button text for the option to keep editing the current book [CHAR LIMIT=20] -->
     <string name="keep_editing">Keep Editing</string>
-    <string name="unknown_book" />
+    <string name="unknown_price" />
+    <string name="empty_view_title_text2">It\'s a bit lonely here ....</string>
+    <string name="empty_view_subtitle_text2">start by adding a book</string>
+    <!--<string name="unknown_price">unknown price</string>-->
+    <!--<string name="unknown_price2">unknown price</string>-->
 
 
     <!---->

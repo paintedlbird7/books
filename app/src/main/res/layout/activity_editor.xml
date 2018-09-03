@@ -92,10 +92,11 @@
         <!-- Label -->
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/imagePhone"
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
+            android:autoLink="phone"
             app:srcCompat="@drawable/phone" />
 
         <TextView

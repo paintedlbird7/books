@@ -54,6 +54,8 @@ public class BookCursorAdapter extends CursorAdapter {
      */
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
+
+
         // Find individual views that we want to modify in the list item layout
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         //TextView priceTextView = (TextView) view.findViewById(R.id.price);
@@ -91,6 +93,16 @@ public class BookCursorAdapter extends CursorAdapter {
             //phoneTextView.setText(bookPhone);
         }
     }
+
+
+
+
+
+//    My suggestion would be to change that to use listeners and then set the listener on inside the bindView() of
+// your BookCursorAdapter. By doing that, you will be able to use the information retrieved from the database on
+// your function and you will be able to construct the item URI.
+
+
 
 
 

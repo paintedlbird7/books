@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,11 +80,33 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return false;
         }
     };
+    private ImageButton PhoneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+
+        //(for web intent) Initialize inside onCreate method:
+
+        PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
+
+
+        PhoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                String phno="tel:10digits";
+
+                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
+                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                //intent.setData(Uri.parse("tel:14087883999"));
+                startActivity(intent);
+            }
+        });
+
+        //TODO ask how to set phone to dail set number in different intents
 
          //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
@@ -454,6 +477,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Close the activity
         finish();
     }
+
+
 
 
     /**

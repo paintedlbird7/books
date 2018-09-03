@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
@@ -26,6 +27,9 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
  * Allows user to create a new book or edit an existing one.
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    int quantity = 0;
+
 
     /**
      * Identifier for the book data loader
@@ -160,13 +164,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantityString);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, supplierString);
         values.put(BookEntry.COLUMN_BOOK_PHONE, phoneString);
-         //If the weight is not provided by the user, don't try to parse the string into an
-         //integer value. Use 0 by default.
-//        int weight = 0;
-//        if (!TextUtils.isEmpty(weightString)) {
-//            weight = Integer.parseInt(weightString);
-//        }
-//        values.put(BookEntry.COLUMN_PET_WEIGHT, weight);
+
 
         // Determine if this is a new or existing book by checking if mCurrentPetUri is null or not
         if (mCurrentBookUri == null) {
@@ -204,7 +202,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
     }
 
-    //TODO left off 12:12 pm
 
 
     @Override
@@ -457,4 +454,44 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Close the activity
         finish();
     }
+
+
+    /**
+     * This method is called when the plus button is clicked.
+     */
+    public void increment(View view) {
+        if (quantity == 100) {
+            //Show an error message as a toast
+            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
+            // Exit this method early because there's nothing left to do
+            return;
+        }
+        quantity = quantity + 1;
+        displayQuantity(quantity);
+    }
+
+    /**
+     * This method is called when the minus button is clicked.
+     */
+    public void decrement(View view) {
+        if (quantity <= 1) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
+            // Exit this method early because there's nothing left to do
+            return;
+        }
+        quantity = quantity - 1;
+        displayQuantity(quantity);
+
+    }
+
+    /**
+     * This method displays the given quantity value on the screen.
+     */
+    private void displayQuantity(int numberOfBooks) {
+        TextView quantityTextView = (TextView) findViewById(
+                R.id.quantity_text_view);
+        quantityTextView.setText("" + numberOfBooks);
+    }
+
 }

@@ -13,8 +13,8 @@ import com.example.android.inventoryappstage1.data.BookContract;
 
 /**
  * {@link BookCursorAdapter} is an adapter for a list or grid view
- * that uses a {@link Cursor} of pet data as its data source. This adapter knows
- * how to create list items for each row of pet data in the {@link Cursor}.
+ * that uses a {@link Cursor} of book data as its data source. This adapter knows
+ * how to create list items for each row of book data in the {@link Cursor}.
  */
 public class BookCursorAdapter extends CursorAdapter {
 
@@ -44,8 +44,8 @@ public class BookCursorAdapter extends CursorAdapter {
     }
 
     /**
-     * This method binds the pet data (in the current row pointed to by cursor) to the given
-     * list item layout. For example, the name for the current pet can be set on the name TextView
+     * This method binds the book data (in the current row pointed to by cursor) to the given
+     * list item layout. For example, the name for the current book can be set on the name TextView
      * in the list item layout.
      *
      * @param view    Existing view, returned earlier by newView() method
@@ -63,7 +63,7 @@ public class BookCursorAdapter extends CursorAdapter {
         //TextView phoneTextView = (TextView) view.findViewById(R.id.phone);
         TextView summaryTextView = (TextView) view.findViewById(R.id.summary);
 
-        // Find the columns of pet attributes that we're interested in
+        // Find the columns of book attributes that we're interested in
         int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_NAME);
 //        int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PRICE);
         //int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_QUANTITY);
@@ -71,19 +71,19 @@ public class BookCursorAdapter extends CursorAdapter {
 //        int phoneColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PHONE);
 
 
-        // Read the pet attributes from the Cursor for the current pet
+        // Read the book attributes from the Cursor for the current book
         String bookName = cursor.getString(nameColumnIndex);
 //        String bookPrice = cursor.getString(priceColumnIndex);
 //        String bookQuantity = cursor.getString(quantityColumnIndex);
 //        String bookSupplier = cursor.getString(supplierColumnIndex);
 //        String bookPhone = cursor.getString(phoneColumnIndex);
 
-        // If the pet breed is empty string or null, then use some default text
-        // that says "Unknown breed", so the TextView isn't blank.
+        // If the book name is empty string or null, then use some default text
+        // that says "Unknown name", so the TextView isn't blank.
         if (TextUtils.isEmpty(bookName)) {
             bookName = context.getString(R.string.unknown_book);
 
-            // Update the TextViews with the attributes for the current pet
+            // Update the TextViews with the attributes for the current book
             nameTextView.setText(bookName);
             //priceTextView.setText(bookPrice);
             //quantityTextView.setText(bookQuantity);

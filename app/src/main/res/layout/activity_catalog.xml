@@ -3,6 +3,7 @@
 <!-- Layout for the list of pets -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,17 +22,17 @@
         android:layout_centerInParent="true">
 
         <ImageView
-            android:id="@+id/empty_shelter_image"
+            android:id="@+id/empty_book_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_library_books"/>
+            app:srcCompat="@drawable/ic_library_books"/>
 
         <TextView
             android:id="@+id/empty_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/empty_shelter_image"
+            android:layout_below="@+id/empty_book_image"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-medium"
             android:paddingTop="16dp"
@@ -58,6 +59,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_add_black"/>
+        app:srcCompat="@drawable/ic_add_black"/>
 
 </RelativeLayout>

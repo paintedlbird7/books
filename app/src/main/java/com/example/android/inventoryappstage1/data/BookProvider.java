@@ -223,7 +223,7 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-        // If the {@link PetEntry#COLUMN_BOOK_PRICE} key is present,
+        // If the {@link BookEntry#COLUMN_BOOK_PRICE} key is present,
         // check that the name value is not null.
         if (values.containsKey(BookEntry.COLUMN_BOOK_PRICE)) {
             String price = values.getAsString(BookEntry.COLUMN_BOOK_PRICE);
@@ -232,8 +232,7 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-//        //TODO DO SAME for rest ^^
-//         //If the {@link PetEntry#COLUMN_BOOK_QUANTITY} key is present,
+//         //If the {@link BookEntry#COLUMN_BOOK_QUANTITY} key is present,
 //         //check that the gender value is valid.
 //        if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
 //            Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
@@ -242,7 +241,7 @@ public class BookProvider extends ContentProvider {
 //            }
 //        }
 
-        // If the {@link PetEntry#COLUMN_PET_WEIGHT} key is present,
+        // If the {@link BookEntry#COLUMN_BOOK_QUANTITY} key is present,
         // check that the weight value is valid.
         if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
             // Check that the weight is greater than or equal to 0 kg
@@ -252,7 +251,7 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-        // If the {@link PetEntry#COLUMN_BOOK_SUPPLIER} key is present,
+        // If the {@link BookEntry#COLUMN_BOOK_SUPPLIER} key is present,
         // check that the name value is not null.
         if (values.containsKey(BookEntry.COLUMN_BOOK_SUPPLIER)) {
             String supplier = values.getAsString(BookEntry.COLUMN_BOOK_SUPPLIER);

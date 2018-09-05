@@ -87,26 +87,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        //(for web intent) Initialize inside onCreate method:
-
-        PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
-
-
-        PhoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v){
-                String phno="tel:10digits";
-
-                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
-                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
-
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                //intent.setData(Uri.parse("tel:14087883999"));
-                startActivity(intent);
-            }
-        });
-
-        //TODO ask how to set phone to dail set number in different intents
 
          //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
@@ -225,7 +205,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
     }
 
-
+// inventory App that stores and displays items in a SQLite Database
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -521,4 +501,61 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         quantityTextView.setText("" + numberOfBooks);
     }
 
+
+    public void saleButton(View view) {
+
+        mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
+
+        String phoneString = mPhoneEditText.getText().toString().trim();
+
+        //(for web intent) Initialize inside onCreate method:
+
+        PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
+
+
+        PhoneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                String phno="tel:10digits";
+
+                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
+                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                //intent.setData(Uri.parse("tel:14087883999"));
+                startActivity(intent);
+            }
+        });
+
+        //TODO ask how to set phone to dail set number in different intents
+    }
 }
+
+
+//    /**
+//     * This method is called when the order button is clicked.
+//     */
+//    public void submitOrder(View view){
+//        // Find the user's name
+//        EditText nameField = (EditText) findViewById(R.id.name_field);
+//        String name = nameField.getText().toString();
+//
+//        // Figure out if the user wants whipped cream topping
+//        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+//        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+//
+//        // Figure out if the user wants chocolate topping
+//        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+//        boolean hasChocolate = chocolateCheckBox.isChecked();
+//
+//        int price = calculatePrice(hasWhippedCream, hasChocolate);
+//        String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
+//
+//        Intent intent = new Intent(Intent.ACTION_SENDTO);
+//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+//        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+//        if (intent.resolveActivity(getPackageManager()) !=null) {
+//            startActivity(intent);
+//
+//        }

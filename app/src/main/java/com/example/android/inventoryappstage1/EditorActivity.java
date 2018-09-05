@@ -206,9 +206,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         Toast.LENGTH_SHORT).show();
             }
         } else {
-            // Otherwise this is an EXISTING book, so update the book with content URI: mCurrentPetUri
+            // Otherwise this is an EXISTING book, so update the book with content URI: mCurrentBookUri
             // and pass in the new ContentValues. Pass in null for the selection and selection args
-            // because mCurrentPetUri will already identify the correct row in the database that
+            // because mCurrentBookUri will already identify the correct row in the database that
             // we want to modify.
             int rowsAffected = getContentResolver().update(mCurrentBookUri, values, null, null);
 
@@ -350,6 +350,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         // Bail early if the cursor is null or there is less than 1 row in the cursor
         if (cursor == null || cursor.getCount() < 1) {
+            displayQuantity(quantity);
             return;
         }
 
@@ -514,6 +515,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int numberOfBooks) {
+        mQuantityEditText.setText(Integer.toString(numberOfBooks));
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfBooks);

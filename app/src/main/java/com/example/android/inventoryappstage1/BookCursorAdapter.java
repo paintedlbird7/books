@@ -135,27 +135,3 @@ public class BookCursorAdapter extends CursorAdapter {
 
 
 
-//    public void bindView(View view, Context context, Cursor cursor) {
-//        TextView nameTextView = (TextView) view.findViewById(R.id.name);
-//                TextView summaryTextView = (TextView) view.findViewById(R.id.summary);
-//
-//        // Find the columns of book attributes that we're interested in
-//        int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_NAME);
-//        int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PRICE);
-//
-//        // Read the book attributes from the Cursor for the current book
-//        String bookName = cursor.getString(nameColumnIndex);
-//        String bookPrice = cursor.getString(priceColumnIndex);
-//
-//        // If the pet breed is empty string or null, then use some default text
-//        // that says "Unknown breed", so the TextView isn't blank.
-//        if (TextUtils.isEmpty(bookPrice)) {
-//            bookPrice = context.getString(R.string.unknown_price);
-//
-//            // Update the TextViews with the attributes for the current pet
-//        nameTextView.setText(bookName);
-//        summaryTextView.setText(bookPrice);
-//  }
-//        }
-//
-//    }

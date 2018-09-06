@@ -31,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="6dp"
-            android:onClick="sale_button"
+            android:onClick="saleButton"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             app:srcCompat="@drawable/ic_add_shopping_cart"
             android:text="Sale" />
 
@@ -45,6 +47,6 @@
         android:textColor="@android:color/holo_purple"
         android:textSize="26sp" />
 
+    </LinearLayout>
 
 
-</LinearLayout>

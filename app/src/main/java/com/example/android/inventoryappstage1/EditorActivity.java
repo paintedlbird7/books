@@ -532,30 +532,3 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 }
 
 
-//    /**
-//     * This method is called when the order button is clicked.
-//     */
-//    public void submitOrder(View view){
-//        // Find the user's name
-//        EditText nameField = (EditText) findViewById(R.id.name_field);
-//        String name = nameField.getText().toString();
-//
-//        // Figure out if the user wants whipped cream topping
-//        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-//        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-//
-//        // Figure out if the user wants chocolate topping
-//        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
-//        boolean hasChocolate = chocolateCheckBox.isChecked();
-//
-//        int price = calculatePrice(hasWhippedCream, hasChocolate);
-//        String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
-//
-//        Intent intent = new Intent(Intent.ACTION_SENDTO);
-//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-//        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
-//        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
-//        if (intent.resolveActivity(getPackageManager()) !=null) {
-//            startActivity(intent);
-//
-//        }

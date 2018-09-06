@@ -10,6 +10,8 @@
     tools:context=".EditorActivity">
 
     <!-- Overview category -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -175,72 +177,10 @@
 
 
     </LinearLayout>
-    <!-- Add sales button inventory category -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/sales_button"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="118dp"-->
-            <!--android:onClick="sale"-->
-            <!--android:text="Sale"-->
-            <!--app:srcCompat="@drawable/ic_add_shopping_cart" />-->
-
-
-    </LinearLayout>
-
-    <!-- Add sales button inventory category -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <!-- Add sales button inventory category -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageButton
-                android:id="@+id/sale_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="6dp"
-                android:onClick="saleButton"
-            app:srcCompat="@drawable/ic_add_shopping_cart"
-                android:text="Sale" />
 
 
 
-            <!--<ImageButton-->
-                <!--android:id="@+id/increment"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:onClick="increment"-->
-                <!--app:srcCompat="@drawable/ic_add" />-->
-
-            <!--<ImageButton-->
-                <!--android:id="@+id/sales_button"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="118dp"-->
-                <!--android:onClick="sale"-->
-                <!--android:text="Sale"-->
-                <!--app:srcCompat="@drawable/ic_add_shopping_cart" />-->
 
 
-        </LinearLayout>
-
-
-    </LinearLayout>
 
 </LinearLayout>

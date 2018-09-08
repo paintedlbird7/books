@@ -75,6 +75,7 @@
     <string name="unknown_price" />
     <string name="empty_view_title_text2">It\'s a bit lonely here ....</string>
     <string name="empty_view_subtitle_text2">start by adding a book</string>
+    <string name="unknown_book" />
     <!--<string name="unknown_price">unknown price</string>-->
     <!--<string name="unknown_price2">unknown price</string>-->
 

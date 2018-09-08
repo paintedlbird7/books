@@ -91,6 +91,7 @@ public class BookCursorAdapter extends CursorAdapter {
         // that says "Unknown name", so the TextView isn't blank.
 //        if (TextUtils.isEmpty(bookName)) {
 //            bookName = context.getString(R.string.unknown_book);
+//        }
 
             // Update the TextViews with the attributes for the current book
             nameTextView.setText(bookName);

@@ -29,7 +29,9 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    int quantity = 0;
+    //int quantity = 0;
+    private static int quantity = 0;
+
 
 
     /**
@@ -512,20 +514,28 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
 
-
         PhoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick (View v){
-                String phno="tel:10digits";
-
-                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
-                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
-
+            public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                //intent.setData(Uri.parse("tel:14087883999"));
+                intent.setData(Uri.parse("tel:3023891427"));
                 startActivity(intent);
             }
         });
+
+//        PhoneButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick (View v){
+//                String phno="tel:10digits";
+//
+//                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
+//                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
+//
+//                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                //intent.setData(Uri.parse("tel:14087883999"));
+//                startActivity(intent);
+//            }
+//        });
 
         //TODO ask how to set phone to dail set number in different intents
     }

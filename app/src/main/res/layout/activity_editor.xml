@@ -169,14 +169,22 @@
         android:onClick="increment"
         app:srcCompat="@drawable/ic_add" />
 
+        <!-- Add sales button inventory category -->
 
-
-        <!--<Button-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/sale_button"-->
             <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_weight="0.52"-->
-            <!--android:onClick="increment"-->
-            <!--android:text="+" />-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="6dp"-->
+            <!--android:onClick="saleButton"-->
+            <!--android:focusable="false"-->
+            <!--android:focusableInTouchMode="false"-->
+            <!--android:descendantFocusability="blocksDescendants"-->
+            <!--app:srcCompat="@drawable/ic_add_shopping_cart"-->
+            <!--android:text="Sale" />-->
+
+
 
 
 

@@ -31,6 +31,8 @@ public class CatalogActivity extends AppCompatActivity implements
     /** Identifier for the book data loader */
     private static final int BOOK_LOADER = 0;
 
+
+
     /** Adapter for the ListView */
     BookCursorAdapter mCursorAdapter;
 
@@ -188,5 +190,3 @@ public class CatalogActivity extends AppCompatActivity implements
 
 
 
-//TODO completed CA, EA & BCA & data BC
-// TODO do BH & BP data folder

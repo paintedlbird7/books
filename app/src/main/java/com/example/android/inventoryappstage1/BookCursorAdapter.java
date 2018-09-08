@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,7 @@ public class BookCursorAdapter extends CursorAdapter {
         int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_QUANTITY);
         int supplierColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_SUPPLIER);
         int phoneColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PHONE);
-         //Get the current items ID
+        //Get the current items ID
         int currentId = cursor.getInt(cursor.getColumnIndex(BookContract.BookEntry._ID));
 
         // Read the book attributes from the Cursor for the current book
@@ -87,19 +88,19 @@ public class BookCursorAdapter extends CursorAdapter {
         //String bookSupplier = cursor.getString(supplierColumnIndex);
         String bookPhone = cursor.getString(phoneColumnIndex);
 
-        // If the book name is empty string or null, then use some default text
-        // that says "Unknown name", so the TextView isn't blank.
-//        if (TextUtils.isEmpty(bookName)) {
-//            bookName = context.getString(R.string.unknown_book);
-//        }
+//         If the book name is empty string or null, then use some default text
+//         that says "Unknown name", so the TextView isn't blank.
+        if (TextUtils.isEmpty(bookName)) {
+            bookName = context.getString(R.string.unknown_book);
+        }
 
-            // Update the TextViews with the attributes for the current book
-            nameTextView.setText(bookName);
+        // Update the TextViews with the attributes for the current book
+        nameTextView.setText(bookName);
 //            priceTextView.setText(bookPrice);
 //            quantityTextView.setText(bookQuantity);
-            //summaryTextView.setText(bookSummary);
-            //supplierTextView.setText(bookSupplier);
-            //phoneTextView.setText(bookPhone);
+        //summaryTextView.setText(bookSummary);
+        //supplierTextView.setText(bookSupplier);
+        //phoneTextView.setText(bookPhone);
 
         // Make the content uri for the current Id
         final Uri contentUri = Uri.withAppendedPath(BookContract.BookEntry.CONTENT_URI, Integer.toString(currentId));
@@ -122,17 +123,5 @@ public class BookCursorAdapter extends CursorAdapter {
                 context.getContentResolver().update(contentUri, values, null, null);
             }
         });
-        }
     }
-
-
-
-
-//    My suggestion would be to change that to use listeners and then set the listener on inside the bindView() of
-// your BookCursorAdapter. By doing that, you will be able to use the information retrieved from the database on
-// your function and you will be able to construct the item URI.
-
-
-
-
-
+}

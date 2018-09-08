@@ -11,17 +11,17 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@string/fontFa"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#2B3D4D"  />
+        android:textColor="@color/tcolor"  />
 
     <TextView
         android:id="@+id/summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@string/fontF"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="#AEB6BD"  />
+        android:textColor="@color/textColor"  />
 
     <!-- Add sales button inventory category -->
 
@@ -30,24 +30,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="@dimen/marginTop"
             android:onClick="saleButton"
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:descendantFocusability="blocksDescendants"
             app:srcCompat="@drawable/ic_add_shopping_cart"
-            android:text="Sale" />
+            android:text="@string/sale" />
 
     <TextView
         android:id="@+id/quantity_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:text="0"
+        android:paddingLeft="@dimen/paddingL"
+        android:paddingRight="@dimen/paddingR"
+        android:text="@string/_0"
         android:textColor="@android:color/holo_purple"
-        android:textSize="26sp" />
+        android:textSize="@dimen/Text_Size26" />
 
     </LinearLayout>
-
-

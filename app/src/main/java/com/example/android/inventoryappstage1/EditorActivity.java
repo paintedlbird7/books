@@ -33,7 +33,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private static int quantity = 0;
 
 
-
     /**
      * Identifier for the book data loader
      */
@@ -68,7 +67,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      */
     private EditText mPhoneEditText;
 
-    /** Boolean flag that keeps track of whether the book has been edited (true) or not (false) */
+    /**
+     * Boolean flag that keeps track of whether the book has been edited (true) or not (false)
+     */
     private boolean mBookHasChanged = false;
 
     /**
@@ -90,7 +91,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         setContentView(R.layout.activity_editor);
 
 
-         //Examine the intent that was used to launch this activity,
+        //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
         Intent intent = getIntent();
         mCurrentBookUri = intent.getData();
@@ -134,7 +135,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
 
-
     /**
      * Get user input from editor and save book into database.
      */
@@ -143,19 +143,16 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Use trim to eliminate leading or trailing white space
         String nameString = mNameEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
+
         String quantityString = mQuantityEditText.getText().toString().trim();
         String supplierString = mSupplierEditText.getText().toString().trim();
         String phoneString = mPhoneEditText.getText().toString().trim();
-
-
-//TODO check if quantity is a Int not String
-
 
         // Check if this is supposed to be a new book
         // and check if all the fields in the editor are blank
         if (mCurrentBookUri == null &&
                 TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
-                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString)&& TextUtils.isEmpty(phoneString)) {
+                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(phoneString)) {
             // Since no fields were modified, we can return early without creating a new book.
             // No need to create ContentValues and no need to do any ContentProvider operations.
             return;
@@ -315,7 +312,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 BookEntry.COLUMN_BOOK_PRICE,
                 BookEntry.COLUMN_BOOK_QUANTITY,
                 BookEntry.COLUMN_BOOK_SUPPLIER,
-                BookEntry.COLUMN_BOOK_PHONE };
+                BookEntry.COLUMN_BOOK_PHONE};
 
         // This loader will execute the ContentProvider's query method on a background thread
         return new CursorLoader(this,   // Parent activity context
@@ -325,7 +322,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 null,                   // No selection arguments
                 null);                  // Default sort order
     }
-
 
 
     @Override
@@ -462,8 +458,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
 
-
-
     /**
      * This method is called when the plus button is clicked.
      */
@@ -518,26 +512,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:3023891427"));
+                intent.setData(Uri.parse("tel:4083891427"));
                 startActivity(intent);
             }
         });
 
-//        PhoneButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick (View v){
-//                String phno="tel:10digits";
-//
-//                //to start the dialer via code, without user interaction.  You need Action_Dial,below code it
-//                //will open Dialer with number specified (Action_Dial doesn't require any permission.)
-//
-//                Intent intent = new Intent(Intent.ACTION_DIAL);
-//                //intent.setData(Uri.parse("tel:14087883999"));
-//                startActivity(intent);
-//            }
-//        });
-
-        //TODO ask how to set phone to dail set number in different intents
     }
 }
 

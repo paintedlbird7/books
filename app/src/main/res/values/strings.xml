@@ -76,14 +76,12 @@
     <string name="empty_view_title_text2">It\'s a bit lonely here ....</string>
     <string name="empty_view_subtitle_text2">start by adding a book</string>
     <string name="unknown_book" />
-    <!--<string name="unknown_price">unknown price</string>-->
-    <!--<string name="unknown_price2">unknown price</string>-->
-
-
-    <!---->
-
-
-
-
+    <string name="_0">0</string>
+    <string name="sale">Sale</string>
+    <string name="fontF">sans-serif</string>
+    <string name="fontFa">sans-serif-medium</string>
+    <string name="text">0</string>
+    <string name="fonntF">sans-serif-medium</string>
+    <string name="sans">sans-serif</string>
 
 </resources>

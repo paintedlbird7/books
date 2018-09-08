@@ -8,5 +8,20 @@
     <dimen name="marginB">44dp</dimen>
     <dimen name="marginL">18dp</dimen>
     <dimen name="marginS">18dp</dimen>
+    <dimen name="Text_Size26">26sp</dimen>
+    <dimen name="paddingR">8dp</dimen>
+    <dimen name="paddingL">8dp</dimen>
+    <dimen name="marginTop">6dp</dimen>
+    <dimen name="layoutW">0dp</dimen>
+    <dimen name="paddingLe">4dp</dimen>
+    <dimen name="layw">0dp</dimen>
+    <dimen name="paddingLef">4dp</dimen>
+    <dimen name="lawidth">0dp</dimen>
+    <dimen name="pLeft">4dp</dimen>
+    <dimen name="paLe">8dp</dimen>
+    <dimen name="paddR">8dp</dimen>
+    <dimen name="textS">26sp</dimen>
+    <dimen name="pTop">16dp</dimen>
+    <dimen name="pT">8dp</dimen>
 </resources>
 

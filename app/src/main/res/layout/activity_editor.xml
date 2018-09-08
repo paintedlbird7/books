@@ -24,11 +24,11 @@
 
         <!-- Input fields -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layoutW"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="vertical"
-            android:paddingLeft="4dp">
+            android:paddingLeft="@dimen/paddingLe">
 
             <!-- Name field -->
             <EditText
@@ -81,10 +81,10 @@
 
         <!-- Input fields -->
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/layw"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:paddingLeft="4dp">
+            android:paddingLeft="@dimen/paddingLef">
 
         </RelativeLayout>
 
@@ -114,10 +114,10 @@
 
         <!-- Input fields -->
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/lawidth"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:paddingLeft="4dp">
+            android:paddingLeft="@dimen/pLeft">
 
             <!-- Phone field -->
             <EditText
@@ -137,64 +137,30 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <!--<Button-->
-            <!--android:layout_width="12dp"-->
-            <!--android:layout_height="48dp"-->
-            <!--android:layout_weight="0.40"-->
-            <!--android:onClick="decrement"-->
-            <!--android:text="-" />-->
-
 
         <ImageButton
             android:id="@+id/decrement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-        android:onClick="decrement"
-        app:srcCompat="@drawable/ic_minus" />
+            android:onClick="decrement"
+            app:srcCompat="@drawable/ic_minus" />
 
         <TextView
             android:id="@+id/quantity_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="0"
+            android:paddingLeft="@dimen/paLe"
+            android:paddingRight="@dimen/paddR"
+            android:text="@string/text"
             android:textColor="@android:color/holo_purple"
-            android:textSize="26sp" />
+            android:textSize="@dimen/textS" />
 
         <ImageButton
             android:id="@+id/increment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-        android:onClick="increment"
-        app:srcCompat="@drawable/ic_add" />
-
-        <!-- Add sales button inventory category -->
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/sale_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_marginTop="6dp"-->
-            <!--android:onClick="saleButton"-->
-            <!--android:focusable="false"-->
-            <!--android:focusableInTouchMode="false"-->
-            <!--android:descendantFocusability="blocksDescendants"-->
-            <!--app:srcCompat="@drawable/ic_add_shopping_cart"-->
-            <!--android:text="Sale" />-->
-
-
-
-
-
-
+            android:onClick="increment"
+            app:srcCompat="@drawable/ic_add" />
 
     </LinearLayout>
-
-
-
-
-
-
 </LinearLayout>

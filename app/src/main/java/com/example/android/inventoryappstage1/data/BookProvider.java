@@ -1,5 +1,6 @@
 package com.example.android.inventoryappstage1.data;
 
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -12,19 +13,24 @@ import android.util.Log;
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 
-
 /**
  * {@link ContentProvider} for Books app.
  */
 public class BookProvider extends ContentProvider {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     public static final String LOG_TAG = BookProvider.class.getSimpleName();
 
-    /** URI matcher code for the content URI for the books table */
+    /**
+     * URI matcher code for the content URI for the books table
+     */
     private static final int BOOKS = 100;
 
-    /** URI matcher code for the content URI for a single books in the books table */
+    /**
+     * URI matcher code for the content URI for a single books in the books table
+     */
     private static final int BOOK_ID = 101;
 
     /**
@@ -57,7 +63,9 @@ public class BookProvider extends ContentProvider {
         sUriMatcher.addURI(BookContract.CONTENT_AUTHORITY, BookContract.PATH_BOOKS + "/#", BOOK_ID);
     }
 
-    /** Database helper object */
+    /**
+     * Database helper object
+     */
     private BookDbHelper mDbHelper;
 
     @Override
@@ -96,7 +104,7 @@ public class BookProvider extends ContentProvider {
                 // arguments that will fill in the "?". Since we have 1 question mark in the
                 // selection, we have 1 String in the selection arguments' String array.
                 selection = BookEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
 
                 // This will perform a query on the books table where the _id equals 3 to return a
                 // Cursor containing that row of the table.
@@ -156,12 +164,6 @@ public class BookProvider extends ContentProvider {
             throw new IllegalArgumentException("Book requires a supplier phone");
         }
 
-        //        // Check that the gender is valid
-//        Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-//        if (quantity == null || !BookEntry.isValidQuantity(quantity)) {
-//            throw new IllegalArgumentException("Book requires valid gender");
-//        }
-
         // If the weight is provided, check that it's greater than or equal to 0 kg
         Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
         if (quantity != null && quantity < 0) {
@@ -197,16 +199,12 @@ public class BookProvider extends ContentProvider {
                 // so we know which row to update. Selection will be "_id=?" and selection
                 // arguments will be a String array containing the actual ID.
                 selection = BookEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 return updateBook(uri, contentValues, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }
     }
-
-
-
-
 
     /**
      * Update books in the database with the given content values. Apply the changes to the rows
@@ -232,24 +230,14 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-//         //If the {@link BookEntry#COLUMN_BOOK_QUANTITY} key is present,
-//         //check that the gender value is valid.
-//        if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
-//            Integer quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-//            if (quantity == null || !BookEntry.isValidQuantity(quantity)) {
-//                throw new IllegalArgumentException("Book requires a valid quantity");
-//            }
-//        }
 
-        // If the {@link BookEntry#COLUMN_BOOK_QUANTITY} key is present,
-        // check that the weight value is valid.
         if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
-            // Check that the weight is greater than or equal to 0 kg
-            Integer weight = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-            if (weight != null && weight < 0) {
-                throw new IllegalArgumentException("Book requires valid weight");
+            String quantity = values.getAsString(BookEntry.COLUMN_BOOK_QUANTITY);
+            if (quantity == null) {
+                throw new IllegalArgumentException("Book requires a quantity");
             }
         }
+
 
         // If the {@link BookEntry#COLUMN_BOOK_SUPPLIER} key is present,
         // check that the name value is not null.
@@ -268,7 +256,6 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-        // No need to check the breed, any value is valid (including null).
 
         // If there are no values to update, then don't try to update the database
         if (values.size() == 0) {
@@ -292,7 +279,6 @@ public class BookProvider extends ContentProvider {
     }
 
 
-
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         // Get writeable database
@@ -310,7 +296,7 @@ public class BookProvider extends ContentProvider {
             case BOOK_ID:
                 // Delete a single row given by the ID in the URI
                 selection = BookEntry._ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 rowsDeleted = database.delete(BookEntry.TABLE_NAME, selection, selectionArgs);
                 break;
             default:

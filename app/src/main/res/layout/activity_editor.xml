@@ -43,12 +43,7 @@
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_book_price"
                 android:inputType="textCapWords" />
-            <!-- Book Price field -->
-            <EditText
-                android:id="@+id/price"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/hint_book_price"
-                android:inputType="textCapWords" />
+
 
             <!-- Book Quantity field -->
             <EditText

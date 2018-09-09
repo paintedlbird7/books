@@ -138,7 +138,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * Get user input from editor and save book into database.
      */
-    private void saveBook() {
+    private boolean saveBook() {
         // Read from input fields
         // Use trim to eliminate leading or trailing white space
         String nameString = mNameEditText.getText().toString().trim();
@@ -153,9 +153,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         if (mCurrentBookUri == null &&
                 TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
                 TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(phoneString)) {
+
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+
             // Since no fields were modified, we can return early without creating a new book.
             // No need to create ContentValues and no need to do any ContentProvider operations.
-            return;
+            return false;
         }
 
         // Create a ContentValues object where column names are the keys,
@@ -202,6 +205,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                         Toast.LENGTH_SHORT).show();
             }
         }
+        return true;
     }
 
 // inventory App that stores and displays items in a SQLite Database

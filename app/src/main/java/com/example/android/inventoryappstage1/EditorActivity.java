@@ -150,9 +150,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         // Check if this is supposed to be a new book
         // and check if all the fields in the editor are blank
-        if (mCurrentBookUri == null &&
-                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
-                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(phoneString)) {
+        if (mCurrentBookUri == null ||
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString) ||
+                TextUtils.isEmpty(priceString) || TextUtils.isEmpty(supplierString) || TextUtils.isEmpty(phoneString)) {
 
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
 

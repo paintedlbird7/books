@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.inventoryappstage1.data.BookContract;
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 /**
@@ -30,7 +31,7 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     //int quantity = 0;
-    private static int quantity = 0;
+    //private static int quantity = 0;
 
 
     /**
@@ -55,7 +56,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * EditText field to enter the book's quantity
      */
-    private EditText mQuantityEditText;
+    private TextView mQuantityTextView;
 
     /**
      * EditText field to enter the book's supplier
@@ -118,7 +119,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Find all relevant views that we will need to read user input from
         mNameEditText = (EditText) findViewById(R.id.edit_book_name);
         mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
-        mQuantityEditText = (EditText) findViewById(R.id.edit_book_quantity);
+        mQuantityTextView = (TextView) findViewById(R.id.edit_book_quantity);
         mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
         mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
 
@@ -127,7 +128,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // or not, if the user tries to leave the editor without saving.
         mNameEditText.setOnTouchListener(mTouchListener);
         mPriceEditText.setOnTouchListener(mTouchListener);
-        mQuantityEditText.setOnTouchListener(mTouchListener);
+        mQuantityTextView.setOnTouchListener(mTouchListener);
         mPhoneEditText.setOnTouchListener(mTouchListener);
         mSupplierEditText.setOnTouchListener(mTouchListener);
 
@@ -144,15 +145,15 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String nameString = mNameEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
 
-        String quantityString = mQuantityEditText.getText().toString().trim();
+        String quantityString = mQuantityTextView.getText().toString().trim();
         String supplierString = mSupplierEditText.getText().toString().trim();
         String phoneString = mPhoneEditText.getText().toString().trim();
 
         // Check if this is supposed to be a new book
         // and check if all the fields in the editor are blank
-        if (mCurrentBookUri == null ||
-                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString) ||
-                TextUtils.isEmpty(priceString) || TextUtils.isEmpty(supplierString) || TextUtils.isEmpty(phoneString)) {
+        if (mCurrentBookUri == null &&
+                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
+                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(phoneString)) {
 
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
 
@@ -332,7 +333,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         // Bail early if the cursor is null or there is less than 1 row in the cursor
         if (cursor == null || cursor.getCount() < 1) {
-            displayQuantity(quantity);
+            //displayQuantity(quantity);
             return;
         }
 
@@ -357,7 +358,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Update the views on the screen with the values from the database
             mNameEditText.setText(name);
             mPriceEditText.setText(price);
-            mQuantityEditText.setText(Integer.toString(quantity));
+            mQuantityTextView.setText(Integer.toString(quantity));
             mSupplierEditText.setText(supplier);
             mPhoneEditText.setText(phone);
         }
@@ -369,7 +370,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // If the loader is invalidated, clear out all the data from the input fields.
         mNameEditText.setText("");
         mPriceEditText.setText("");
-        mQuantityEditText.setText("");
+        mQuantityTextView.setText("");
         mSupplierEditText.setText("");
         mPhoneEditText.setText("");
 
@@ -462,24 +463,34 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
 
-    /**
-     * This method is called when the plus button is clicked.
-     */
-    public void increment(View view) {
-        if (quantity == 100) {
-            //Show an error message as a toast
-            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
-            // Exit this method early because there's nothing left to do
-            return;
-        }
-        quantity = quantity + 1;
-        displayQuantity(quantity);
-    }
-
+//    /**
+//     * This method is called when the plus button is clicked.
+//     */
+//    public void increment(View view) {
+//        if (quantity == 100) {
+//            //Show an error message as a toast
+//            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
+//            // Exit this method early because there's nothing left to do
+//            return;
+//        }
+//        quantity = quantity + 1;
+//        displayQuantity(quantity);
+//    }
+//
     /**
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
+
+        int quantity = Integer.valueOf(quantityTextView.getText().toString());
+        if (quantity > 0) {
+            quantity = quantity - 1;
+        }
+        // Content Values to update quantity
+        ContentValues values = new ContentValues();
+        values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+        // update the database
+        context.getContentResolver().update(mCurrentBookUri, values, null, null);
         if (quantity <= 1) {
             // Show an error message as a toast
             Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
@@ -487,19 +498,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return;
         }
         quantity = quantity - 1;
-        displayQuantity(quantity);
+        //displayQuantity(quantity);
 
     }
-
-    /**
-     * This method displays the given quantity value on the screen.
-     */
-    private void displayQuantity(int numberOfBooks) {
-        mQuantityEditText.setText(Integer.toString(numberOfBooks));
-        TextView quantityTextView = (TextView) findViewById(
-                R.id.quantity_text_view);
-        quantityTextView.setText("" + numberOfBooks);
-    }
+//
+//    /**
+//     * This method displays the given quantity value on the screen.
+//     */
+//    private void displayQuantity(int numberOfBooks) {
+//        mQuantityEditText.setText(Integer.toString(numberOfBooks));
+//        TextView quantityTextView = (TextView) findViewById(
+//                R.id.quantity_text_view);
+//        quantityTextView.setText("" + numberOfBooks);
+//    }
 
 
     public void saleButton(View view) {

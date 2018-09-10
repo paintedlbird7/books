@@ -191,3 +191,5 @@ public class CatalogActivity extends AppCompatActivity implements
 
 
 
+//TODO: check all All the "numbers" that are being entered by the user like quantity
+// TODO ; etc should be of type "Integer" not "Text" .

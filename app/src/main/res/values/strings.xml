@@ -84,4 +84,7 @@
     <string name="fonntF">sans-serif-medium</string>
     <string name="sans">sans-serif</string>
 
+    <string name="books">Books db </string>
+
+
 </resources>

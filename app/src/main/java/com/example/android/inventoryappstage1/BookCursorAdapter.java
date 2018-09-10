@@ -107,6 +107,8 @@ public class BookCursorAdapter extends CursorAdapter {
 
         //// Change the quantity when you click the button
         button.setOnClickListener(new View.OnClickListener() {
+            public Uri mCurrentBookUri;
+
             @Override
             public void onClick(View v) {
                 TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
@@ -120,7 +122,7 @@ public class BookCursorAdapter extends CursorAdapter {
                 values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
 
                 // update the database
-                context.getContentResolver().update(contentUri, values, null, null);
+                context.getContentResolver().update(mCurrentBookUri, values, null, null);
             }
         });
     }

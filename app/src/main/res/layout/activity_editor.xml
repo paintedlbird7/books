@@ -140,15 +140,15 @@
             android:onClick="decrement"
             app:srcCompat="@drawable/ic_minus" />
 
-        <TextView
-            android:id="@+id/quantity_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/paLe"
-            android:paddingRight="@dimen/paddR"
-            android:text="@string/text"
-            android:textColor="@android:color/holo_purple"
-            android:textSize="@dimen/textS" />
+        <!--<TextView-->
+            <!--android:id="@+id/quantity_text_view"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="@dimen/paLe"-->
+            <!--android:paddingRight="@dimen/paddR"-->
+            <!--android:text="@string/text"-->
+            <!--android:textColor="@android:color/holo_purple"-->
+            <!--android:textSize="@dimen/textS" />-->
 
         <ImageButton
             android:id="@+id/increment"

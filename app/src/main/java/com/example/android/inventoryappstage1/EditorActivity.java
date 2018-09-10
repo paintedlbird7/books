@@ -463,10 +463,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
 
-
-
-
-
     //
 //    int quantity = Integer.valueOf(quantityTextView.getText().toString());
 //                if (quantity > 0) {
@@ -490,7 +486,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public void increment(View view) {
 
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
-        if (quantity > 0) {
+        if (quantity < 100) {
             quantity = quantity + 1;
         }
         // Content Values to update quantity
@@ -499,15 +495,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // update the database
         getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         //if (quantity <= 1) {
-            // Show an error message as a toast
-            Toast.makeText(this, "You cannot have more than 100 book", Toast.LENGTH_SHORT).show();
-            // Exit this method early because there's nothing left to do
-            return;
-        }
-        //quantity = quantity + 1;
-        //displayQuantity(quantity);
-
+        // Show an error message as a toast
+        // Toast.makeText(this, "You cannot have more than 100 book", Toast.LENGTH_SHORT).show();
+        // Exit this method early because there's nothing left to do
+        return;
     }
+    //quantity = quantity + 1;
+    //displayQuantity(quantity);
 
 
 //    public void increment(View view) {
@@ -521,13 +515,14 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //        displayQuantity(quantity);
 //    }
 //
+
     /**
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
 
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
-        if (quantity < 0) {
+        if (quantity < 100) {
             quantity = quantity - 1;
         }
         // Content Values to update quantity
@@ -535,7 +530,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
         // update the database
         getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-        //if (quantity <= 1) {
+        if (quantity <= 1) {
             // Show an error message as a toast
             Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
@@ -543,14 +538,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
         //quantity = quantity - 1;
         //displayQuantity(quantity);
-
-    }
-
-
-
-
-
-
 
 
 //
@@ -565,24 +552,25 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //    }
 
 
-    public void saleButton(View view){
-
-        mPhoneEditText=(EditText)findViewById(R.id.edit_phone);
-
-        String phoneString=mPhoneEditText.getText().toString().trim();
-
-        //(for web intent) Initialize inside onCreate method:
-
-        PhoneButton=(ImageButton)findViewById(R.id.imagePhone);
-
-        PhoneButton.setOnClickListener(new View.OnClickListener(){
-@Override
-public void onClick(View v){
-        Intent intent=new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:4083891427"));
-        startActivity(intent);
-        }
-        });
-
-        }
-        }
+//    public void saleButton(View view){
+//
+//        mPhoneEditText=(EditText)findViewById(R.id.edit_phone);
+//
+//        String phoneString=mPhoneEditText.getText().toString().trim();
+//
+//        //(for web intent) Initialize inside onCreate method:
+//
+//        PhoneButton=(ImageButton)findViewById(R.id.imagePhone);
+//
+//        PhoneButton.setOnClickListener(new View.OnClickListener(){
+//@Override
+//public void onClick(View v){
+//        Intent intent=new Intent(Intent.ACTION_DIAL);
+//        intent.setData(Uri.parse("tel:4083891427"));
+//        startActivity(intent);
+//        }
+//        });
+//
+//        }
+    }
+}

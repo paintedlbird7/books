@@ -463,9 +463,53 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     }
 
 
+
+
+
+
+    //
+//    int quantity = Integer.valueOf(quantityTextView.getText().toString());
+//                if (quantity > 0) {
+//        quantity = quantity - 1;
+//    }
+//    // Content Values to update quantity
+//    ContentValues values = new ContentValues();
+//                values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//    // update the database
+//                context.getContentResolver().update(contentUri, values, null, null);
+//
+//
+//
+//
+
+
 //    /**
 //     * This method is called when the plus button is clicked.
 //     */
+
+    public void increment(View view) {
+
+        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
+        if (quantity > 0) {
+            quantity = quantity + 1;
+        }
+        // Content Values to update quantity
+        ContentValues values = new ContentValues();
+        values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+        // update the database
+        getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+        //if (quantity <= 1) {
+            // Show an error message as a toast
+            Toast.makeText(this, "You cannot have more than 100 book", Toast.LENGTH_SHORT).show();
+            // Exit this method early because there's nothing left to do
+            return;
+        }
+        //quantity = quantity + 1;
+        //displayQuantity(quantity);
+
+    }
+
+
 //    public void increment(View view) {
 //        if (quantity == 100) {
 //            //Show an error message as a toast
@@ -482,57 +526,63 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      */
     public void decrement(View view) {
 
-        int quantity = Integer.valueOf(quantityTextView.getText().toString());
-        if (quantity > 0) {
+        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
+        if (quantity < 0) {
             quantity = quantity - 1;
         }
         // Content Values to update quantity
         ContentValues values = new ContentValues();
         values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
         // update the database
-        context.getContentResolver().update(mCurrentBookUri, values, null, null);
-        if (quantity <= 1) {
+        getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+        //if (quantity <= 1) {
             // Show an error message as a toast
             Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
             return;
         }
-        quantity = quantity - 1;
+        //quantity = quantity - 1;
         //displayQuantity(quantity);
 
     }
+
+
+
+
+
+
+
+
 //
 //    /**
 //     * This method displays the given quantity value on the screen.
 //     */
 //    private void displayQuantity(int numberOfBooks) {
-//        mQuantityEditText.setText(Integer.toString(numberOfBooks));
+//        mQuantityTextView.setText(Integer.toString(numberOfBooks));
 //        TextView quantityTextView = (TextView) findViewById(
 //                R.id.quantity_text_view);
 //        quantityTextView.setText("" + numberOfBooks);
 //    }
 
 
-    public void saleButton(View view) {
+    public void saleButton(View view){
 
-        mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
+        mPhoneEditText=(EditText)findViewById(R.id.edit_phone);
 
-        String phoneString = mPhoneEditText.getText().toString().trim();
+        String phoneString=mPhoneEditText.getText().toString().trim();
 
         //(for web intent) Initialize inside onCreate method:
 
-        PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
+        PhoneButton=(ImageButton)findViewById(R.id.imagePhone);
 
-        PhoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:4083891427"));
-                startActivity(intent);
-            }
+        PhoneButton.setOnClickListener(new View.OnClickListener(){
+@Override
+public void onClick(View v){
+        Intent intent=new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:4083891427"));
+        startActivity(intent);
+        }
         });
 
-    }
-}
-
-
+        }
+        }

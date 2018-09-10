@@ -527,18 +527,21 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
         // Content Values to update quantity
         ContentValues values = new ContentValues();
-        values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-        // update the database
-        getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-        if (quantity <= 1) {
+        if (quantity <= 0) {
             // Show an error message as a toast
             Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
             return;
+        } else {
+
+            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+            // update the database
+            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
+
         //quantity = quantity - 1;
         //displayQuantity(quantity);
-
+    }
 
 //
 //    /**
@@ -573,4 +576,3 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //
 //        }
     }
-}

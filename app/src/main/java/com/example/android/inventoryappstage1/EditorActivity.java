@@ -91,6 +91,18 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        final ImageButton mIncrement = findViewById(R.id.increment);
+        ImageButton mDecrement = findViewById(R.id.decrement);
+
+        mIncrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                increment();
+            }
+        });
+
+
+
 
         //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
@@ -123,6 +135,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
         mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
 
+
+
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
         // has touched or modified them. This will let us know if there are unsaved changes
         // or not, if the user tries to leave the editor without saving.
@@ -131,7 +145,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mQuantityTextView.setOnTouchListener(mTouchListener);
         mPhoneEditText.setOnTouchListener(mTouchListener);
         mSupplierEditText.setOnTouchListener(mTouchListener);
-
 
     }
 
@@ -482,11 +495,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //    /**
 //     * This method is called when the plus button is clicked.
 //     */
-    //// Change the quantity when you click the button
-        ImageButton.setOnClickListener(new View.OnClickListener() {
-        public Uri mCurrentBookUri;
 
-    public void increment(View view) {
+
+    public void increment() {
 
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
         if (quantity < 100) {

@@ -483,8 +483,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //     * This method is called when the plus button is clicked.
 //     */
     //// Change the quantity when you click the button
-//        ImageButton.setOnClickListener(new View.OnClickListener() {
-//        public Uri mCurrentBookUri;
+        ImageButton.setOnClickListener(new View.OnClickListener() {
+        public Uri mCurrentBookUri;
 
     public void increment(View view) {
 

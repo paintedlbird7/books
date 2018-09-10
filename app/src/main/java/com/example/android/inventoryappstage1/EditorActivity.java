@@ -389,7 +389,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // If the loader is invalidated, clear out all the data from the input fields.
         mNameEditText.setText("");
         mPriceEditText.setText("");
-        mQuantityTextView.setText("");
+        mQuantityTextView.setText(Integer.toString(0));
         mSupplierEditText.setText("");
         mPhoneEditText.setText("");
 

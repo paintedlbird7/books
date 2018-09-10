@@ -73,6 +73,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
      */
     private boolean mBookHasChanged = false;
 
+
     /**
      * OnTouchListener that listens for any user touches on a View, implying that they are modifying
      * the view, and we change the mPetHasChanged boolean to true.
@@ -91,8 +92,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        final ImageButton mIncrement = findViewById(R.id.increment);
+        ImageButton mIncrement = findViewById(R.id.increment);
         ImageButton mDecrement = findViewById(R.id.decrement);
+
 
         mIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,8 +102,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 increment();
             }
         });
-
-
 
 
         //Examine the intent that was used to launch this activity,
@@ -134,7 +134,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mQuantityTextView = (TextView) findViewById(R.id.edit_book_quantity);
         mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
         mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
-
 
 
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
@@ -502,22 +501,36 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
         if (quantity < 100) {
             quantity = quantity + 1;
-        }
-        // Content Values to update quantity
-        ContentValues values = new ContentValues();
-        if (quantity <= 0) {
-            // Show an error message as a toast
-            Toast.makeText(this, "You cannot have more than 1 book", Toast.LENGTH_SHORT).show();
-            // Exit this method early because there's nothing left to do
-            return;
-        } else {
 
-            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-            // update the database
-            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
-
+        mQuantityTextView.setText(String.valueOf(quantity));
     }
+
+
+
+
+
+
+//
+//        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
+//        if (quantity < 100) {
+//            quantity = quantity + 1;
+//        }
+//        // Content Values to update quantity
+//        ContentValues values = new ContentValues();
+//        if (quantity <= 0) {
+//            // Show an error message as a toast
+//            Toast.makeText(this, "You cannot have more than 1 book", Toast.LENGTH_SHORT).show();
+//            // Exit this method early because there's nothing left to do
+//            return;
+//        } else {
+//
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//            // update the database
+//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+
+
+
 
 //        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
 //        if (quantity < 100) {

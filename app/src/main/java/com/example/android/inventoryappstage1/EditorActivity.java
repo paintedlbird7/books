@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.inventoryappstage1.data.BookContract;
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 /**
@@ -100,6 +99,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             @Override
             public void onClick(View v) {
                 increment();
+            }
+        });
+
+        mDecrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                decrement();
             }
         });
 
@@ -370,7 +376,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Update the views on the screen with the values from the database
             mNameEditText.setText(name);
             mPriceEditText.setText(price);
-            mQuantityTextView.setText(Integer.toString(quantity));
+            //mQuantityTextView.setText(Integer.toString(quantity));
+            mQuantityTextView.setText(String.valueOf(quantity));
             mSupplierEditText.setText(supplier);
             mPhoneEditText.setText(phone);
         }
@@ -566,29 +573,42 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     /**
      * This method is called when the minus button is clicked.
      */
-    public void decrement(View view) {
+    public void decrement() {
+
 
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
-        if (quantity < 100) {
+        if (quantity == 0) {
+            //Write your toast message here
+            return;
+        }
+        if (quantity > 100) {
             quantity = quantity - 1;
         }
-        // Content Values to update quantity
-        ContentValues values = new ContentValues();
-        if (quantity <= 0) {
-            // Show an error message as a toast
-            Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
-            // Exit this method early because there's nothing left to do
-            return;
-        } else {
+        mQuantityTextView.setText(String.valueOf(quantity));
+    }
 
-            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-            // update the database
-            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-        }
+
+//        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
+//        if (quantity < 100) {
+//            quantity = quantity - 1;
+//        }
+//        // Content Values to update quantity
+//        ContentValues values = new ContentValues();
+//        if (quantity <= 0) {
+//            // Show an error message as a toast
+//            Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
+//            // Exit this method early because there's nothing left to do
+//            return;
+//        } else {
+//
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//            // update the database
+//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+//        }
 
         //quantity = quantity - 1;
         //displayQuantity(quantity);
-    }
+
 
 //
 //    /**

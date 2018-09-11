@@ -30,6 +30,10 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
  */
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    // Tracks the quantity for Increment Button
+    int mQuantity = Integer.parseInt(mQuantityTextView.getText().toStrong());
+
+
     //int quantity = 0;
     //private static int quantity = 0;
 
@@ -97,9 +101,20 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mQuantity = mQuantity + 1;
                 increment();
             }
+
+            //mQuantityTextView.setText(String.valueOf(mQuantity));
         });
+
+        // int mQuantity = Integer.parseInt(yourTextView.getText().toStrong());
+
+        // mQuantity = mQuantity + 1
+
+        // yourTextView.setText(String.valueOf(mQuantity));
+
+
 
             mDecrement.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,6 +124,23 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             });
 
 
+
+
+//        @Override
+//        public void onClick(View v) {
+//            TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
+//            int quantity = Integer.valueOf(quantityView.getText().toString());
+//
+//            if (quantity > 0) {
+//                quantity = quantity - 1;
+//            }
+//            // Content Values to update quantity
+//            ContentValues values = new ContentValues();
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//
+//            // update the database
+//            context.getContentResolver().update(mCurrentBookUri, values, null, null);
+//        }
 
         //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
@@ -523,6 +555,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
 
+        mQuantityTextView.setText(String.valueOf(mQuantity));
+
     }
 
 //        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
@@ -578,6 +612,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // update the database
             getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
+
+
+
+
 
 //        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
 //        if (quantity < 100) {

@@ -46,7 +46,7 @@
 
 
             <!-- Book Quantity field -->
-            <TextView
+            <EditText
                 android:id="@+id/edit_book_quantity"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_book_quantity"

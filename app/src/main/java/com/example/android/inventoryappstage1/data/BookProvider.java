@@ -230,12 +230,6 @@ public class BookProvider extends ContentProvider {
             }
         }
 
-//                if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
-//        int quantity = values.getAsInteger(BookEntry.COLUMN_BOOK_QUANTITY);
-//        if (quantity < 0) {
-//            throw new IllegalArgumentException("Book requires a valid quantity");
-//        }
-
 
         if (values.containsKey(BookEntry.COLUMN_BOOK_QUANTITY)) {
             String quantity = values.getAsString(BookEntry.COLUMN_BOOK_QUANTITY);

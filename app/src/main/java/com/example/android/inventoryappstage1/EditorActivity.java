@@ -22,7 +22,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.inventoryappstage1.data.BookContract;
 import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 
 /**
@@ -31,7 +30,18 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // Tracks the quantity for Increment Button
-    int mQuantity = Integer.parseInt(mQuantityTextView.getText().toStrong());
+    //int mQuantity = 0;
+
+//    int whatever = 0;
+////if(!myvariable.isEmpty()) {
+////        whatever = Integer.parsInt(myvariable);
+////    }
+
+//    int quantity = 0;
+//    if(!mQuantityTextView.isEmpty()) {
+//        quantity = Integer.parseInt(mQuantityTextView);
+//    }
+
 
 
     //int quantity = 0;
@@ -101,7 +111,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mQuantity = mQuantity + 1;
                 increment();
             }
 
@@ -535,8 +544,26 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //     */
 
 
-    public void increment() {
 
+//    int whatever = 0;
+//if(!myvariable.isEmpty()) {
+//        whatever = Integer.parsInt(myvariable);
+//    }
+
+
+
+    public void increment() {
+//start This Bailey's advice
+        String quantityString = mQuantityTextView.getText().toString();
+        if (quantityString.isEmpty()) {
+            Toast.makeText(this, "Must have a quantity before increasing", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            int quantity = Integer.parseInt(quantityString);
+        }
+        // finish This Bailey's advice to prevent app from crashing when clicking on + in the Add A Book
+
+        //int quantity = Integer.parseInt(mQuantityTextView.getText().toString());
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
         if (quantity < 100) {
             quantity = quantity + 1;
@@ -550,14 +577,22 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return;
         } else {
 
-            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-            // update the database
-            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//            // update the database
+//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
 
-        mQuantityTextView.setText(String.valueOf(mQuantity));
+        mQuantityTextView.setText(String.valueOf(quantity));
+
 
     }
+
+
+    // int mQuantity = Integer.parseInt(yourTextView.getText().toStrong());
+
+    // mQuantity = mQuantity + 1
+
+    // yourTextView.setText(String.valueOf(mQuantity));
 
 //        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
 //        if (quantity < 100) {
@@ -578,23 +613,21 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     //displayQuantity(quantity);
 
 
-//    public void increment(View view) {
-//        if (quantity == 100) {
-//            //Show an error message as a toast
-//            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
-//            // Exit this method early because there's nothing left to do
-//            return;
-//        }
-//        quantity = quantity + 1;
-//        displayQuantity(quantity);
-//    }
-//
 
-    /**
-     * This method is called when the minus button is clicked.
-     */
+
+
     public void decrement() {
+//start This Bailey's advice
+        String quantityString = mQuantityTextView.getText().toString();
+        if (quantityString.isEmpty()) {
+            Toast.makeText(this, "Must have a quantity before decreasing", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            int quantity = Integer.parseInt(quantityString);
+        }
+        // finish This Bailey's advice to prevent app from crashing when clicking on + in the Add A Book
 
+        //int quantity = Integer.parseInt(mQuantityTextView.getText().toString());
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
         if (quantity > 0) {
             quantity = quantity - 1;
@@ -608,10 +641,55 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return;
         } else {
 
-            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-            // update the database
-            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//            // update the database
+//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
+
+        mQuantityTextView.setText(String.valueOf(quantity));
+
+
+    }
+
+
+
+//    /**
+//     * This method is called when the minus button is clicked.
+//     */
+//    public void decrement() {
+//
+//        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
+//        if (quantity > 0) {
+//            quantity = quantity - 1;
+//        }
+//        // Content Values to update quantity
+//        ContentValues values = new ContentValues();
+//        if (quantity <= 0) {
+//            // Show an error message as a toast
+//            Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
+//            // Exit this method early because there's nothing left to do
+//            return;
+//        } else {
+//
+//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//            // update the database
+//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
+//        }
+//
+
+
+//    public void increment(View view) {
+//        if (quantity == 100) {
+//            //Show an error message as a toast
+//            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
+//            // Exit this method early because there's nothing left to do
+//            return;
+//        }
+//        quantity = quantity + 1;
+//        displayQuantity(quantity);
+//    }
+//
+
 
 
 
@@ -636,7 +714,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 //        }
 //        //quantity = quantity - 1;
 //        //displayQuantity(quantity);
-    }
+
 
 //
 //    /**

@@ -1,18 +1,23 @@
 package com.example.android.inventoryappstage1;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.inventoryappstage1.data.BookContract;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * {@link BookCursorAdapter} is an adapter for a list or grid view
@@ -72,6 +77,8 @@ public class BookCursorAdapter extends CursorAdapter {
 
         // Find the columns of book attributes that we're interested in
         //get values from cursor
+        final int BookIdColumnIndex = cursor.getInt( cursor.getColumnIndex( BookContract.BookEntry._ID ) );
+
         int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_QUANTITY);
@@ -80,6 +87,7 @@ public class BookCursorAdapter extends CursorAdapter {
         //Get the current items ID
         int currentId = cursor.getInt(cursor.getColumnIndex(BookContract.BookEntry._ID));
 
+
         // Read the book attributes from the Cursor for the current book
         //Populate fields with values
         String bookName = cursor.getString(nameColumnIndex);
@@ -87,6 +95,8 @@ public class BookCursorAdapter extends CursorAdapter {
         String bookQuantity = cursor.getString(quantityColumnIndex);
         //String bookSupplier = cursor.getString(supplierColumnIndex);
         String bookPhone = cursor.getString(phoneColumnIndex);
+        final int bookQty = cursor.getInt( quantityColumnIndex );
+
 
 //         If the book name is empty string or null, then use some default text
 //         that says "Unknown name", so the TextView isn't blank.
@@ -105,25 +115,78 @@ public class BookCursorAdapter extends CursorAdapter {
         // Make the content uri for the current Id
         final Uri contentUri = Uri.withAppendedPath(BookContract.BookEntry.CONTENT_URI, Integer.toString(currentId));
 
-        //// Change the quantity when you click the button
-        button.setOnClickListener(new View.OnClickListener() {
-            public Uri mCurrentBookUri;
 
+        button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
-                int quantity = Integer.valueOf(quantityView.getText().toString());
-
-                if (quantity > 0) {
-                    quantity = quantity - 1;
-                }
-                // Content Values to update quantity
-                ContentValues values = new ContentValues();
-                values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-
-                // update the database
-                context.getContentResolver().update(mCurrentBookUri, values, null, null);
+                Uri productUri = ContentUris.withAppendedId( BookContract.BookEntry.CONTENT_URI, BookIdColumnIndex );
+                decreaseToyQuantity( context, productUri, bookQty );
             }
-        });
+
+            private void decreaseToyQuantity(Context context, Uri toyUri, int bookQty) {
+
+                int decreasedQTY = (bookQty >= 1) ? bookQty - 1 : 0;
+
+                if (bookQty == 0) {
+                    Toast.makeText( context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG ).show();
+                }
+
+                // Update table by using new value of quantity
+                ContentValues contentValues = new ContentValues();
+                contentValues.put( BookContract.BookEntry.COLUMN_BOOK_QUANTITY, decreasedQTY );
+                int numRowsUpdated = context.getContentResolver().update( toyUri, contentValues, null, null );
+                if (numRowsUpdated > 0) {
+                    // Show error message in Logs with info about pass update.
+                    Log.i( TAG, context.getString( R.string.one_less_msg ) );
+                } else {
+                    Toast.makeText( context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG ).show();
+                }
+            }
+        } );
+
+//        //// Change the quantity when you click the button
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public Uri mCurrentBookUri;
+//
+//            @Override
+//            public void onClick(View v) {
+//                TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
+//                int quantity = Integer.valueOf(quantityView.getText().toString());
+//
+//                if (quantity > 0) {
+//                    quantity = quantity - 1;
+//                }
+//                // Content Values to update quantity
+//                ContentValues values = new ContentValues();
+//                values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//
+//                // update the database
+//                context.getContentResolver().update( mCurrentBookUri, values, null, null );
+//            }
+//        });
+
+
+
+
+//        //// Change the quantity when you click the button
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public Uri mCurrentBookUri;
+//
+//            @Override
+//            public void onClick(View v) {
+//                TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
+//                int quantity = Integer.valueOf(quantityView.getText().toString());
+//
+//                if (quantity > 0) {
+//                    quantity = quantity - 1;
+//                }
+//                // Content Values to update quantity
+//                ContentValues values = new ContentValues();
+//                values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
+//
+//                // update the database
+//                context.getContentResolver().update(mCurrentBookUri, values, null, null); // his line throws error
+//            }
+//        });
     }
 }

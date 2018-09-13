@@ -33,8 +33,9 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginTop="@dimen/marginTop"
-    android:onClick="saleButton"
-    android:focusable="false"
+        android:onClick="saleButton"
+
+        android:focusable="false"
     android:focusableInTouchMode="false"
     android:descendantFocusability="blocksDescendants"
     app:srcCompat="@drawable/ic_remove_shopping_cart"

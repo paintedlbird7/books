@@ -30,7 +30,7 @@ import com.example.android.inventoryappstage1.data.BookContract.BookEntry;
 public class EditorActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     // Tracks the quantity for Increment Button
-    //int mQuantity = 0;
+    int mQuantity = 0;
 
 //    int whatever = 0;
 ////if(!myvariable.isEmpty()) {

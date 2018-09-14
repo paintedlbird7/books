@@ -187,9 +187,3 @@ public class CatalogActivity extends AppCompatActivity implements
         mCursorAdapter.swapCursor(null);
     }
 }
-
-
-
-
-//TODO: check all All the "numbers" that are being entered by the user like quantity
-// TODO ; etc should be of type "Integer" not "Text" .

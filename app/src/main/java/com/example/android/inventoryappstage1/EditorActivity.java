@@ -36,23 +36,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private String phoneString;
 
-
-//    int whatever = 0;
-////if(!myvariable.isEmpty()) {
-////        whatever = Integer.parsInt(myvariable);
-////    }
-
-//    int quantity = 0;
-//    if(!mQuantityTextView.isEmpty()) {
-//        quantity = Integer.parseInt(mQuantityTextView);
-//    }
-
-
-
-    //int quantity = 0;
-    //private static int quantity = 0;
-
-
     /**
      * Identifier for the book data loader
      */
@@ -119,30 +102,21 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 increment();
             }
 
-            //mQuantityTextView.setText(String.valueOf(mQuantity));
         });
 
-        // int mQuantity = Integer.parseInt(yourTextView.getText().toStrong());
-
-        // mQuantity = mQuantity + 1
-
-        // yourTextView.setText(String.valueOf(mQuantity));
-
-
-
-            mDecrement.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    decrement();
-                }
-            });
+        mDecrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                decrement();
+            }
+        });
 
         PhoneButton = (ImageButton) findViewById(R.id.imagePhone);
 
         PhoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(LOG_TAG,"Phone button is clicked");
+                Log.e(LOG_TAG, "Phone button is clicked");
                 //This line was also in saveBook method and I moved it here because we need current phoneString variable. So we can send the phoneString to Call App
                 phoneString = mPhoneEditText.getText().toString().trim();
 
@@ -155,26 +129,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             }
         });
-
-
-
-
-
-//        @Override
-//        public void onClick(View v) {
-//            TextView quantityView = (TextView) view.findViewById(R.id.quantity_text_view);
-//            int quantity = Integer.valueOf(quantityView.getText().toString());
-//
-//            if (quantity > 0) {
-//                quantity = quantity - 1;
-//            }
-//            // Content Values to update quantity
-//            ContentValues values = new ContentValues();
-//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-//
-//            // update the database
-//            context.getContentResolver().update(mCurrentBookUri, values, null, null);
-//        }
 
         //Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.
@@ -206,7 +160,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mQuantityTextView = (TextView) findViewById(R.id.edit_book_quantity);
         mSupplierEditText = (EditText) findViewById(R.id.edit_supplier);
         mPhoneEditText = (EditText) findViewById(R.id.edit_phone);
-
 
 
         // Setup OnTouchListeners on all the input fields, so we can determine if the user
@@ -547,36 +500,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         finish();
     }
 
-
-    //
-//    int quantity = Integer.valueOf(quantityTextView.getText().toString());
-//                if (quantity > 0) {
-//        quantity = quantity - 1;
-//    }
-//    // Content Values to update quantity
-//    ContentValues values = new ContentValues();
-//                values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-//    // update the database
-//                context.getContentResolver().update(contentUri, values, null, null);
-//
-//
-//
-//
-
-
-//    /**
-//     * This method is called when the plus button is clicked.
-//     */
-
-
-
-//    int whatever = 0;
-//if(!myvariable.isEmpty()) {
-//        whatever = Integer.parsInt(myvariable);
-//    }
-
-
-
     public void increment() {
 //start This Bailey's advice
         String quantityString = mQuantityTextView.getText().toString();
@@ -601,45 +524,9 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Exit this method early because there's nothing left to do
             return;
         } else {
-
-//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-//            // update the database
-//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
-
         mQuantityTextView.setText(String.valueOf(quantity));
-
-
     }
-
-
-    // int mQuantity = Integer.parseInt(yourTextView.getText().toStrong());
-
-    // mQuantity = mQuantity + 1
-
-    // yourTextView.setText(String.valueOf(mQuantity));
-
-//        int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
-//        if (quantity < 100) {
-//            quantity = quantity + 1;
-//        }
-//        // Content Values to update quantity
-//        ContentValues values = new ContentValues();
-//        values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-//        // update the database
-//        getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
-//        //if (quantity <= 1) {
-//        // Show an error message as a toast
-//        // Toast.makeText(this, "You cannot have more than 100 book", Toast.LENGTH_SHORT).show();
-//        // Exit this method early because there's nothing left to do
-//        //return;
-//    }
-    //quantity = quantity + 1;
-    //displayQuantity(quantity);
-
-
-
-
 
     public void decrement() {
 //start This Bailey's advice
@@ -665,15 +552,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             // Exit this method early because there's nothing left to do
             return;
         } else {
-
-//            values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, quantity);
-//            // update the database
-//            getBaseContext().getContentResolver().update(mCurrentBookUri, values, null, null);
         }
 
         mQuantityTextView.setText(String.valueOf(quantity));
-
-
     }
-        }
-
+}

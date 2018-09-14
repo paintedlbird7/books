@@ -20,7 +20,6 @@ import com.example.android.inventoryappstage1.data.BookContract;
 import static android.content.ContentValues.TAG;
 
 
-
 /**
  * {@link BookCursorAdapter} is an adapter for a list or grid view
  * that uses a {@link Cursor} of book data as its data source. This adapter knows
@@ -76,7 +75,7 @@ public class BookCursorAdapter extends CursorAdapter {
 
         // Find the columns of book attributes that we're interested in
         //get values from cursor
-        final int BookIdColumnIndex = cursor.getInt( cursor.getColumnIndex( BookContract.BookEntry._ID ) );
+        final int BookIdColumnIndex = cursor.getInt(cursor.getColumnIndex(BookContract.BookEntry._ID));
         int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_QUANTITY);
@@ -88,9 +87,8 @@ public class BookCursorAdapter extends CursorAdapter {
         String bookName = cursor.getString(nameColumnIndex);
         String bookPrice = cursor.getString(priceColumnIndex);
         String bookQuantity = cursor.getString(quantityColumnIndex);
-        final int bookQty = cursor.getInt( quantityColumnIndex );
+        final int bookQty = cursor.getInt(quantityColumnIndex);
 
-        //String bookSupplier = cursor.getString(supplierColumnIndex);
 
 //         If the book name is empty string or null, then use some default text
 //         that says "Unknown name", so the TextView isn't blank.
@@ -107,11 +105,11 @@ public class BookCursorAdapter extends CursorAdapter {
         // Make the content uri for the current Id
         final Uri contentUri = Uri.withAppendedPath(BookContract.BookEntry.CONTENT_URI, Integer.toString(currentId));
 
-        button.setOnClickListener( new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri productUri = ContentUris.withAppendedId( BookContract.BookEntry.CONTENT_URI, BookIdColumnIndex );
-                decreaseToyQuantity( context, productUri, bookQty );
+                Uri productUri = ContentUris.withAppendedId(BookContract.BookEntry.CONTENT_URI, BookIdColumnIndex);
+                decreaseToyQuantity(context, productUri, bookQty);
             }
 
             private void decreaseToyQuantity(Context context, Uri toyUri, int bookQty) {
@@ -119,20 +117,20 @@ public class BookCursorAdapter extends CursorAdapter {
                 int decreasedQTY = (bookQty >= 1) ? bookQty - 1 : 0;
 
                 if (bookQty == 0) {
-                    Toast.makeText( context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG ).show();
+                    Toast.makeText(context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG).show();
                 }
 
                 // Update table by using new value of quantity
                 ContentValues contentValues = new ContentValues();
-                contentValues.put( BookContract.BookEntry.COLUMN_BOOK_QUANTITY, decreasedQTY );
-                int numRowsUpdated = context.getContentResolver().update( toyUri, contentValues, null, null );
+                contentValues.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, decreasedQTY);
+                int numRowsUpdated = context.getContentResolver().update(toyUri, contentValues, null, null);
                 if (numRowsUpdated > 0) {
                     // Show error message in Logs with info about pass update.
-                    Log.i( TAG, context.getString( R.string.one_less_msg ) );
+                    Log.i(TAG, context.getString(R.string.one_less_msg));
                 } else {
-                    Toast.makeText( context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG ).show();
+                    Toast.makeText(context.getApplicationContext(), R.string.toast_gone_msg, Toast.LENGTH_LONG).show();
                 }
             }
-        } );
+        });
     }
 }

@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
 import com.example.android.inventoryappstage1.data.BookContract;
 
 /**
@@ -28,12 +27,15 @@ import com.example.android.inventoryappstage1.data.BookContract;
 public class CatalogActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    /** Identifier for the book data loader */
+    /**
+     * Identifier for the book data loader
+     */
     private static final int BOOK_LOADER = 0;
 
 
-
-    /** Adapter for the ListView */
+    /**
+     * Adapter for the ListView
+     */
     BookCursorAdapter mCursorAdapter;
 
     @Override
@@ -88,10 +90,6 @@ public class CatalogActivity extends AppCompatActivity implements
         // Kick off the loader
         getLoaderManager().initLoader(BOOK_LOADER, null, this);
     }
-
-
-
-
 
 
     /**
@@ -163,7 +161,6 @@ public class CatalogActivity extends AppCompatActivity implements
                 BookContract.BookEntry.COLUMN_BOOK_QUANTITY,
                 BookContract.BookEntry.COLUMN_BOOK_SUPPLIER,
                 BookContract.BookEntry.COLUMN_BOOK_PHONE};
-
 
 
         // This loader will execute the ContentProvider's query method on a background thread

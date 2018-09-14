@@ -71,9 +71,6 @@ public class BookCursorAdapter extends CursorAdapter {
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView priceTextView = (TextView) view.findViewById(R.id.edit_book_price);
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity_text_view);
-        TextView supplierTextView = (TextView) view.findViewById(R.id.supplier);
-        //TextView phoneTextView = (TextView) view.findViewById(R.id.phone);
-        TextView summaryTextView = (TextView) view.findViewById(R.id.summary);
         // Quantity Button
         ImageButton button = (ImageButton) view.findViewById(R.id.sale_button);
 
@@ -83,8 +80,6 @@ public class BookCursorAdapter extends CursorAdapter {
         int nameColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_QUANTITY);
-        int supplierColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_SUPPLIER);
-        int phoneColumnIndex = cursor.getColumnIndex(BookContract.BookEntry.COLUMN_BOOK_PHONE);
         //Get the current items ID
         int currentId = cursor.getInt(cursor.getColumnIndex(BookContract.BookEntry._ID));
 
@@ -96,7 +91,6 @@ public class BookCursorAdapter extends CursorAdapter {
         final int bookQty = cursor.getInt( quantityColumnIndex );
 
         //String bookSupplier = cursor.getString(supplierColumnIndex);
-        String bookPhone = cursor.getString(phoneColumnIndex);
 
 //         If the book name is empty string or null, then use some default text
 //         that says "Unknown name", so the TextView isn't blank.
@@ -108,9 +102,7 @@ public class BookCursorAdapter extends CursorAdapter {
         nameTextView.setText(bookName);
         priceTextView.setText(bookPrice);
         quantityTextView.setText(bookQuantity);
-        //summaryTextView.setText(bookSummary);
-        //supplierTextView.setText(bookSupplier);
-        //phoneTextView.setText(bookPhone);
+
 
         // Make the content uri for the current Id
         final Uri contentUri = Uri.withAppendedPath(BookContract.BookEntry.CONTENT_URI, Integer.toString(currentId));

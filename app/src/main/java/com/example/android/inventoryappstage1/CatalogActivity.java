@@ -105,7 +105,7 @@ public class CatalogActivity extends AppCompatActivity implements
         // and Toto's book attributes are the values.
         ContentValues values = new ContentValues();
         values.put(BookContract.BookEntry.COLUMN_BOOK_NAME, "Frankenstein");
-        values.put(BookContract.BookEntry.COLUMN_BOOK_PRICE, "5");
+        values.put(BookContract.BookEntry.COLUMN_BOOK_PRICE, "$5");
         values.put(BookContract.BookEntry.COLUMN_BOOK_QUANTITY, 14);
         values.put(BookContract.BookEntry.COLUMN_BOOK_SUPPLIER, "booksm");
         values.put(BookContract.BookEntry.COLUMN_BOOK_PHONE, "4088390987");

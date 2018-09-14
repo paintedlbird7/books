@@ -88,7 +88,7 @@
 
     <string name="toast_gone_msg">book is out of stock</string>
     <string name="one_less_msg">one less book</string>
-
+    <string name="price">$</string>
 
 
 </resources>

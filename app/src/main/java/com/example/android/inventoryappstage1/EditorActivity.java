@@ -190,8 +190,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         // Check if this is supposed to be a new book
         // and check if all the fields in the editor are blank
         if (mCurrentBookUri == null &&
-                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
-                TextUtils.isEmpty(priceString) && TextUtils.isEmpty(supplierString) && TextUtils.isEmpty(phoneString)) {
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString) ||
+                TextUtils.isEmpty(priceString)|| TextUtils.isEmpty(supplierString) || TextUtils.isEmpty(phoneString)) {
 
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
 
@@ -520,7 +520,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         ContentValues values = new ContentValues();
         if (quantity <= 0) {
             // Show an error message as a toast
-            Toast.makeText(this, "You cannot have more than 1 book", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You cannot have more than 100 books", Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
             return;
         } else {
@@ -541,12 +541,12 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         //int quantity = Integer.parseInt(mQuantityTextView.getText().toString());
         int quantity = Integer.valueOf(mQuantityTextView.getText().toString());
-        if (quantity > 0) {
+        if (quantity > -1) {
             quantity = quantity - 1;
         }
         // Content Values to update quantity
         ContentValues values = new ContentValues();
-        if (quantity <= 0) {
+        if (quantity <= -1) {
             // Show an error message as a toast
             Toast.makeText(this, "You cannot have less than 1 book", Toast.LENGTH_SHORT).show();
             // Exit this method early because there's nothing left to do
